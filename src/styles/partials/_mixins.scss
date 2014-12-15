@@ -1,0 +1,56 @@
+.clearfix{
+  &::after{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+.relative{
+  position: relative;
+}
+.right{
+	float: right;
+}
+@mixin wrap-ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* BREAKPOINTS */
+$bp-phone : 320px;
+$bp-small-tablet : 768px;
+$bp-tablet : 992px;
+$bp-desktop : 1200px;
+
+@mixin phone {
+  @media (max-width: #{$bp-phone}) {
+    @content;
+  }
+}
+
+@mixin small-tablet {
+  @media (min-width: #{$bp-phone}) and (max-width: #{$bp-small-tablet}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$bp-small-tablet}) and (max-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+@mixin print {
+  @media print {
+    @content;
+  }
+}

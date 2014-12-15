@@ -1,0 +1,27 @@
+
+	<section class="search">
+
+		<div class="field">
+
+      <input type="text" class="search-links" placeholder="search links" ng-model="searchLinks" ng-model-options="{ debounce: 300 }" />
+      <input type="button" class="btn-flat-red search-links-btn" value="Search" />
+
+    </div>
+
+	</section>
+
+  <section class="list">
+
+    <ul class="links-list">
+      <li class="link" ng-repeat="link in links | hideEmpty:searchLinks | filter:searchLinks" ng-click="redirect(link)">  
+          <div class="link-body img">
+            <p class="title">{{link.title}}</p> 
+            <p class="url">{{link.url}}</p>
+          </div>  
+          <div class="tags"> 
+            <p class="tag" ng-repeat="tag in link.tags track by $index">{{tag}}</p>  
+          </div>
+      </li>
+    </ul>
+
+    </section>
