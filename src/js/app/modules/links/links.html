@@ -19,7 +19,7 @@
             <p class="url">{{link.url}}</p>
           </div>  
           <div class="tags"> 
-            <p class="tag" ng-repeat="tag in link.tags track by $index">{{tag}}</p>  
+            <p class="tag" ng-click="clickTag(tag, $event)" ng-repeat="tag in link.tags track by $index">{{tag}}</p>  
           </div>
       </li>
     </ul>

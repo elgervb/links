@@ -24,6 +24,12 @@ app.controller('LinksController', ['$scope', '$http', function($scope, $http){
       } 
     };
 
+    $scope.clickTag = function(tag, $event){
+      $event.preventDefault();
+      $event.stopImmediatePropagation();
+      $scope.searchLinks = tag;
+    };
+
     $scope.onKeyPress = function($event){
       if ($event.keyCode === 27){
         $scope.searchLinks = "";
