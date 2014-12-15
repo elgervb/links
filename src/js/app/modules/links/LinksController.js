@@ -27,6 +27,7 @@ app.controller('LinksController', ['$scope', '$http', function($scope, $http){
     $scope.onKeyPress = function($event){
       if ($event.keyCode === 27){
         $scope.searchLinks = "";
+        document.querySelector('.search-links').focus();
       }
     };
 }]);
