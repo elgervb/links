@@ -24,9 +24,18 @@ app.controller('LinksController',
     };
 
     $scope.onKeyPress = function($event){
+      
+      // clear & focus search box 
       if ($event.keyCode === 27){
         $scope.searchLinks = "";
         document.querySelector('.search-links').focus();
       }
+      // focus search box
+      else if($event.ctrlKey && $event.key === "f"){
+        document.querySelector('.search-links').focus();
+        $event.preventDefault();
+        $event.stopImmediatePropagation();
+      }
+
     };
 });
