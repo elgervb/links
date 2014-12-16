@@ -8,6 +8,10 @@ var app = angular.module('links', ['ngRoute'])
 	  controller: 'LinksController',
 	  templateUrl: '/assets/js/app/modules/links/links.html'
 	})
+  .when('/add', {
+    controller: 'AddController',
+    templateUrl: '/assets/js/app/modules/add/add.html'
+  })
 
    $locationProvider.html5Mode('true');
 

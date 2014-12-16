@@ -1,0 +1,31 @@
+
+	<section class="add">
+
+    <form method="post" ng-submit="submit()">
+
+  		<div class="field">
+        <label for="title">Title</label>
+        <input type="text" id="title" placeholder="title" required autofocus ng-model="title" />
+      </div>
+
+      <div class="field">
+        <label for="url">Url</label>
+        <input type="url" id="url" placeholder="url" required ng-model="ul"/>
+      </div>
+
+      <div class="field">
+        <label for="tags">Tags</label>
+        <input type="tags" id="tags" placeholder="tags" ng-model="tags" />
+        <span>Semicolon seperated</span>
+      </div>
+
+      <div class="field">
+
+        <button class="btn-flat" ng-click="cancel()">Cancel</button>
+        <button  type="submit" class="btn-flat-red">Submit</button>
+
+      </div>
+
+    </form>
+
+  </section>
