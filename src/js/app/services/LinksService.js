@@ -23,14 +23,11 @@ app.service('LinksService', function($http, $q){
   });
 
   
+  /**
+   * Handle success
+   */
   function handleSuccess( response ) {
-    return( response.data.sort(function compare(a,b) {
-          if (a.title < b.title)
-             return -1;
-          if (a.title > b.title)
-            return 1;
-          return 0;
-        }) );
+    return( response.data );
   };
 
   function handleError( response ) {
@@ -39,10 +36,10 @@ app.service('LinksService', function($http, $q){
     // server (or what not handles properly - ex. server error), then we
     // may have to normalize it on our end, as best we can.
     if (
-    ! angular.isObject( response.data ) ||
-    ! response.data.message
+      ! angular.isObject( response.data ) ||
+      ! response.data.message
     ) {
-    return( $q.reject( "An unknown error occurred." ) );
+      return( $q.reject( "An unknown error occurred." ) );
     }
     // Otherwise, use expected error message.
     return( $q.reject( response.data.message ) );
