@@ -1,18 +1,27 @@
-// http://www.bennadel.com/blog/2612-using-the-http-service-in-angularjs-to-make-ajax-requests.htm
 app.service('LinksService', function($http, $q){
-  // public API
-  return ({
-    getLinks : getLinks
-  });
 
-  function getLinks(){
-
+  var getLinks = function(){
     var request = $http({
       method: "get",
       url: 'assets/js/app/modules/links/links.json'
     });
     return( request.then( handleSuccess, handleError ) );
+  },
+  addLink = function(link){
+    var request = $http({
+      method: "post",
+      url: 'server/links/add',
+      data: link
+    });
+    return( request.then( handleSuccess, handleError ) );
   };
+
+  // public API
+  return ({
+    getLinks : getLinks,
+    addLink  : addLink
+  });
+
   
   function handleSuccess( response ) {
     return( response.data.sort(function compare(a,b) {
