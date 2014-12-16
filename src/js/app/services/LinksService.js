@@ -22,6 +22,12 @@ app.service('LinksService', function($http, $q){
 
   },
   addLink = function(link){
+
+    var links = JSON.parse( localStorage.getItem('local::links') );
+    links.push(link);
+
+    localStorage.setItem('local::links', JSON.stringify( links ) );
+
     var request = $http({
       method: "post",
       url: 'server/links/add',

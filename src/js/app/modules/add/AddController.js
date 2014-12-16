@@ -1,21 +1,25 @@
 
-app.controller('AddController', ['$scope', '$http', '$location', 
- function($scope, $http, $location){
+app.controller('AddController', 
+ function($scope, $http, $location, LinksService){
 
   $scope.submit = function(){
-    console.log('submit');
-    var link = {};
-    link.title = $scope.title;
-    link.url = $scope.url;
-    if ($scope.tags && $scope.tags.indexOf(';') >= 0){
-      link.tags = $scope.tags.split(';');
-    }
-    else{
-      link.tags = $scope.tags;
-    }
-  }
+    console.dir($scope.link);
+
+    LinksService.addLink($scope.link);
+    $location.path('/');
+  };
+
   $scope.cancel = function(){
     $location.path('/');
   };
+
+  $scope.addTag = function(tag){
+
+    $scope.link = $scope.link || {};
+    $scope.link.tags = $scope.link.tags || [];
+    $scope.link.tags.push(tag);
+    $scope.tag = "";
+  
+  };
 		
-}]);
+});
