@@ -1,5 +1,9 @@
+/**
+ * Service to access links
+ */
 app.service('LinksService', function($http, $q){
 
+  
   var getLinks = function(){
 
     // TODO find a way to merge the 2 promises
