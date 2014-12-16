@@ -6,16 +6,20 @@ app.service('LinksService', function($http, $q){
   
   var getLinks = function(){
 
-    // TODO find a way to merge the 2 promises
-    var local = getLocalLinks();
-    if (local){return local;}
-
+    if (localStorage.getItem('local::links')){
+      console.log("Returning links from local storage");
+      return $q(function(resolve, reject) {
+        resolve( JSON.parse( localStorage.getItem('local::links') ) ) ;
+      });
+    }
+    
     console.log("Returning links from server");
     var request = $http({
       method: "get",
       url: 'assets/js/app/modules/links/links.json'
     });
     return( request.then( handleSuccess, handleError ) );
+
   },
   addLink = function(link){
     var request = $http({
@@ -31,15 +35,6 @@ app.service('LinksService', function($http, $q){
     getLinks : getLinks,
     addLink  : addLink
   });
-
-  function getLocalLinks(){
-    if (localStorage.getItem('local::links')){
-      console.log("Returning links from local storage");
-      return $q(function(resolve, reject) {
-        resolve( JSON.parse( localStorage.getItem('local::links') ) ) ;
-      });
-    }
-  }
   
   /**
    * Handle success
