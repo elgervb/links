@@ -1,6 +1,4 @@
 
-console.log('app.js');
-
 var app = angular.module('links', ['ngRoute'])
 
 .config(function($routeProvider, $locationProvider) {
