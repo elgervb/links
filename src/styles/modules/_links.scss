@@ -13,6 +13,7 @@ section.search{
     padding: 18px;
     position: absolute;
     right: 0;
+    top: 5px;
     width: 20%;
 
     &:hover{
@@ -23,15 +24,14 @@ section.search{
   }
 }
 
-
 .links-list{
   
-  .ng-enter{
-    animation: fadeIn 1s both ease-in;
+  .link.ng-enter{
+    animation: fadeIn 0.3s both ease-in;
   }
 
-  .ng-leave{
-    animation: fadeOut 1s both ease-in;
+  .link.ng-leave{
+    animation: fadeOut 0.3s both ease-in;
   }
 
   .link {
@@ -43,6 +43,7 @@ section.search{
     margin: 0;
     max-width: 280px;
     min-width: 150px;
+    opacity: 1;
     overflow: hidden;
     padding: 0 1% 1% 0;
     position: relative;
