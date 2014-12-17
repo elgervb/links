@@ -9,7 +9,7 @@ app.service('LinksService', function($http, $q){
     var links = JSON.parse( localStorage.getItem('local::links') );
     links.push(link);
 
-    localStorage.setItem('local::links', JSON.stringify( links ) );
+    save();
 
     var request = $http({
       method: "post",
@@ -18,8 +18,7 @@ app.service('LinksService', function($http, $q){
     });
     return( request.then( handleSuccess, handleError ) );
   },
-   getLinks = function(){
-
+  getLinks = function(){
     if (localStorage.getItem('local::links')){
       console.log("Returning links from local storage");
       return $q(function(resolve, reject) {
@@ -33,13 +32,38 @@ app.service('LinksService', function($http, $q){
       url: 'assets/js/app/modules/links/links.json'
     });
     return( request.then( handleSuccess, handleError ) );
-
+  },
+  increaseCount = function(link){
+    link.count ++;
+    update(link);
+  },
+  getIndex = function(links, guid){
+    // get this index of the link
+     if (links && links.length > 0){
+      for (var i=0;i<links.length;i++){
+        if (links[i].guid === guid){
+          return i;
+        }
+      }
+    }
+    return -1;
+  },
+  save = function(links){
+    localStorage.setItem('local::links', JSON.stringify( links ) );
+  }
+  update = function(link){
+    var links = JSON.parse( localStorage.getItem('local::links') ),
+    index = getIndex(links, link.guid);
+    
+    links[index] = link;
+    save(links);
   };
 
   // public API
   return ({
+    addLink  : addLink,
     getLinks : getLinks,
-    addLink  : addLink
+    increaseCount : increaseCount
   });
   
   /**
