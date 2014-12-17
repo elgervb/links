@@ -4,7 +4,21 @@
 app.service('LinksService', function($http, $q){
 
   
-  var getLinks = function(){
+  var addLink = function(link){
+
+    var links = JSON.parse( localStorage.getItem('local::links') );
+    links.push(link);
+
+    localStorage.setItem('local::links', JSON.stringify( links ) );
+
+    var request = $http({
+      method: "post",
+      url: 'server/links/add',
+      data: link
+    });
+    return( request.then( handleSuccess, handleError ) );
+  },
+   getLinks = function(){
 
     if (localStorage.getItem('local::links')){
       console.log("Returning links from local storage");
@@ -20,20 +34,6 @@ app.service('LinksService', function($http, $q){
     });
     return( request.then( handleSuccess, handleError ) );
 
-  },
-  addLink = function(link){
-
-    var links = JSON.parse( localStorage.getItem('local::links') );
-    links.push(link);
-
-    localStorage.setItem('local::links', JSON.stringify( links ) );
-
-    var request = $http({
-      method: "post",
-      url: 'server/links/add',
-      data: link
-    });
-    return( request.then( handleSuccess, handleError ) );
   };
 
   // public API
