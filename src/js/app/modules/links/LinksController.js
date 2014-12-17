@@ -2,6 +2,8 @@
 app.controller('LinksController', 
   function($scope, $http, LinksService){
 
+    $scope.pageClass = 'links-page';
+
     // get links and sort them by title
     LinksService.getLinks().then(function(links){
       $scope.links = links.sort(function compare(a,b) {

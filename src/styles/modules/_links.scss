@@ -25,6 +25,15 @@ section.search{
 
 
 .links-list{
+  
+  .ng-enter{
+    animation: fadeIn 1s both ease-in;
+  }
+
+  .ng-leave{
+    animation: fadeOut 1s both ease-in;
+  }
+
   .link {
     background-color: #4082A0;
     border: 1px solid #fff;
