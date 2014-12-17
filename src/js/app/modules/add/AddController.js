@@ -2,6 +2,8 @@
 app.controller('AddController', 
  function($scope, $http, $location, LinksService){
 
+  $scope.pageClass = 'add-page';
+
   $scope.submit = function(){
     console.dir($scope.link);
 

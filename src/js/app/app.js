@@ -1,5 +1,5 @@
 
-var app = angular.module('links', ['ngRoute'])
+var app = angular.module('links', ['ngRoute', 'ngAnimate'])
 
 .config(function($routeProvider, $locationProvider) {
  
