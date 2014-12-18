@@ -8,12 +8,12 @@ section.search{
     position: absolute;
     top: 83px;
     transform: translateX(-50%);
-    transition: all 0.3s ease 0s;
+    transition: transform 0.3s ease 0s, opacity 1s ease 0s;
 
     &:hover{
       opacity: 1;
       transform: translate(-50%, 50%);
-      z-index: 999;
+      z-index: 101;
 
       .add-label{
         opacity: 1;
