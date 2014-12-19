@@ -127,7 +127,7 @@ gulp.task('express-lr', ['express', 'live-reload'], function(){});
  */
 gulp.task('images', function() {
   return gulp.src('src/img/**/*')
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: onError}))
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('dist/assets/img'))
     .pipe(notify({ message: 'Images task complete' }));
@@ -175,7 +175,7 @@ gulp.task('scripts', ['scripts-app','scripts-vendor']);
  */
 gulp.task('scripts-app', ['docs'], function() {
   return gulp.src('src/js/app/**/*.js')
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
@@ -210,7 +210,7 @@ gulp.task('scripts-vendor', function() {
  */
 gulp.task('styles', function() {
   return gulp.src('src/styles/main.scss')
-    .pipe(plumber())
+    .pipe(plumber({errorHandler: onError}))
     .pipe(sass({ style: 'expanded' }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(gulp.dest('dist/assets/css'))
@@ -226,7 +226,7 @@ gulp.task('styles', function() {
  */
 gulp.task('todo', function() {
     gulp.src('src/js/app/**/*.js')
-      .pipe(plumber())
+      .pipe(plumber({errorHandler: onError}))
       .pipe(todo())
       .pipe(gulp.dest('./')) //output todo.md as markdown
       .pipe(todo.reporter('json', {fileName: 'todo.json'}))
@@ -258,11 +258,13 @@ gulp.task('watch', function() {
   gulp.watch('src/js/app/**/*.json', ['copy']);
 });
 
-
-function handleError (error) {
-
-    //If you want details of the error in the console
-    console.log(error.toString());
+var onError = function(err) {
+    notify.onError({
+                title:    "Gulp",
+                subtitle: "Failure!",
+                message:  "Error: <%= error.message %>",
+                sound:    "Beep"
+            })(err);
 
     this.emit('end');
-}
+};
