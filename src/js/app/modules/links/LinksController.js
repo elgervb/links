@@ -8,7 +8,8 @@ app.controller('LinksController',
 
     $scope.redirect = function(link){
       $timeout(function(){
-          LinksService.increaseCount(link);
+        link.count++;
+        LinksService.update(link);
         
       });
       window.open(link.url, '_blank').focus();
