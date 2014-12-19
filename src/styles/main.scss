@@ -33,5 +33,8 @@
 .page.ng-enter 			{ animation: slideInLeft 0.5s both ease-in; z-index: 8888; }
 .page.ng-leave 			{ animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }
 
-.add-page.ng-enter  { animation: slideInRight 0.5s both ease-in; z-index: 8888;}
-.add-page.ng-leave  { animation: slideOutRight 0.5s both ease-in; z-index: 9999;}
+.add-page.ng-enter  { animation: slideInUp 0.5s both ease-in; z-index: 8888;}
+.add-page.ng-leave  { animation: slideOutTop 0.5s both ease-in; z-index: 9999;}
+
+.settings-page.ng-enter{ animation: slideInUp 0.5s both ease-in; z-index: 8888;}
+.settings-page.ng-leave{ animation: slideOutTop 0.5s both ease-in; z-index: 9999;}

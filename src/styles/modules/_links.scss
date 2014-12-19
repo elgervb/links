@@ -2,6 +2,21 @@
 section.search{
   padding: 48px 16px;
 
+  .settings-btn{
+    background: transparent url(../img/settings.png) no-repeat center center;
+    height: 32px;
+    opacity: .3;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    transition: opacity .3s ease-in 0s;
+    width: 32px;
+  }
+
+  .settings-btn:hover{
+    opacity: 1;
+  }
+
   .add{
     box-shadow: 0 0 0 2000000px rgba(255, 255, 255, 0.7);
     left: 50%;
