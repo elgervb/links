@@ -3,7 +3,6 @@
  */
 app.service('LinksService', function($http, $q){
 
-  
   var addLink = function(link){
 
     var links = JSON.parse( localStorage.getItem('local::links') );
@@ -33,10 +32,6 @@ app.service('LinksService', function($http, $q){
     });
     return( request.then( handleSuccess, handleError ) );
   },
-  increaseCount = function(link){
-    link.count ++;
-    update(link);
-  },
   getIndex = function(links, guid){
     // get this index of the link
      if (links && links.length > 0){
@@ -50,7 +45,7 @@ app.service('LinksService', function($http, $q){
   },
   save = function(links){
     localStorage.setItem('local::links', JSON.stringify( links ) );
-  }
+  },
   update = function(link){
     var links = JSON.parse( localStorage.getItem('local::links') ),
     index = getIndex(links, link.guid);
@@ -61,9 +56,9 @@ app.service('LinksService', function($http, $q){
 
   // public API
   return ({
-    addLink  : addLink,
-    getLinks : getLinks,
-    increaseCount : increaseCount
+    addLink       : addLink,
+    getLinks      : getLinks,
+    update        : update
   });
   
   /**
