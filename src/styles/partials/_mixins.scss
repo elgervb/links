@@ -14,6 +14,7 @@
 .right{
 	float: right;
 }
+
 @mixin wrap-ellipsis{
   overflow: hidden;
   text-overflow: ellipsis;
