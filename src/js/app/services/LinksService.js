@@ -44,6 +44,7 @@ app.service('LinksService', function($http, $q){
     return -1;
   },
   save = function(links){
+    localStorage.removeItem('local::links');
     localStorage.setItem('local::links', JSON.stringify( links ) );
   },
   update = function(link){
@@ -58,7 +59,8 @@ app.service('LinksService', function($http, $q){
   return ({
     addLink       : addLink,
     getLinks      : getLinks,
-    update        : update
+    update        : update,
+    save          : save
   });
   
   /**
