@@ -1,6 +1,6 @@
 
 app.controller('LinksController', 
-  function($scope, $http, $timeout, LinksService){
+  function($scope, $timeout, LinksService){
 
     $scope.pageClass = 'links-page';
 

@@ -1,6 +1,24 @@
 
 	<section>
 
-    <h1> Settings </h1>
+    	<h1> Settings </h1>
 
-  </section>
+
+    	<h2>Import / Export</h2>
+
+    	<div class="field">
+
+    		<button class="btn-flat-red" ng-click="import()">Import</button>
+    		<button class="btn-flat-blue" ng-click="export()">Export</button>
+
+    	</div>
+
+    	<div class="field" >
+
+    		<p>JSON <span ng-show="exportData">{{exportData.length}} links</span><p>
+    		<textarea class="export-textarea">{{exportData | json:1}}</textarea>
+    		<button class="btn-flat" ng-click="clear()">Clear</button>
+
+    	</div>
+
+  	</section>
