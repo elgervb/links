@@ -7,8 +7,10 @@ app.service('LinksService', function($http, $q){
 
     var links = JSON.parse( localStorage.getItem('local::links') );
     links.push(link);
-
-    save();
+    link.guid = createGUID();
+    link.timestamp = new Date().getTime();
+    
+    save(links);
 
     var request = $http({
       method: "post",
@@ -16,6 +18,12 @@ app.service('LinksService', function($http, $q){
       data: link
     });
     return( request.then( handleSuccess, handleError ) );
+  },
+  createGUID = function(){
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    });
   },
   getLinks = function(){
     if (localStorage.getItem('local::links')){
