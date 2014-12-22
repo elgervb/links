@@ -11,6 +11,12 @@ app.controller('SettingsController',
 	  });
   };
 
+  $scope.reset = function(){
+   
+    LinksService.reset();
+    $location.path('/');
+  };
+
   $scope.import = function(){
 	// TODO error handling...
 	if ($scope.exportData){
