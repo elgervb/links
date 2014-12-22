@@ -15,7 +15,7 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
   .when('/settings', {
     controller: 'SettingsController',
     templateUrl: '/assets/js/app/modules/settings/settings.html'
-  })
+  });
 
    $locationProvider.html5Mode('true');
 
@@ -25,13 +25,14 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
 app.filter("hideEmpty", function(){ 
   return function(object, query){
     if(!query)
-        return {}
+        return {};
     else
         return object;
-}});
+  };
+});
 
 app.filter("filterLinks", function(){
-  return filter = function(links, query){
+  return function(links, query){
     var regex = new RegExp(query, 'i'),
     props = ['title', 'url', 'tags'],
     i;
@@ -49,5 +50,5 @@ app.filter("filterLinks", function(){
     else{
       return links;
     }
-  }
+  };
 });
