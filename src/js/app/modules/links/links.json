@@ -204,13 +204,13 @@
   "title": "AjaxAmp",
   "url": "http://pc04258:5151/",
   "tags": [
-   "Planon",
-   "Pss2",
+   "planon",
+   "pss2",
    "music",
    "server",
    "mp3",
    "web interface",
-   "WinAmp"
+   "winamp"
   ],
   "guid": "cf977890-4c59-413d-8686-d570f16b2f58",
   "timestamp": 1394194832871,
@@ -222,10 +222,25 @@
   "url": "http://pc08667:8070",
   "tags": [
    "Pss2",
+   "local",
    "Elger van Boxtel",
    "eaboxt"
   ],
   "guid": "7ae6b6b3-736f-4478-9d4f-a785d6d40e93",
+  "timestamp": 1394194832871,
+  "count": 6,
+  "visible": true
+ },
+ {
+  "title": "Pss2 Wouter",
+  "url": "http://pc08667:8070",
+  "tags": [
+   "Pss2",
+   "local",
+   "Wouter Roosendaal",
+   "waroos"
+  ],
+  "guid": "7ae6e6b3-736f-4478-9d4f-b785e6e40e93",
   "timestamp": 1394194832871,
   "count": 6,
   "visible": true
@@ -236,6 +251,7 @@
   "tags": [
    "Pss2",
    "PaHaer",
+   "local",
    "Pim Haerkens"
   ],
   "guid": "8488dfec-6ea6-4580-8e60-9a5df8ef5b5f",
@@ -644,6 +660,7 @@
    "Pss",
    "Local",
    "sanabu",
+   "local",
    "Sven Nabuurs",
    "Planon"
   ],
