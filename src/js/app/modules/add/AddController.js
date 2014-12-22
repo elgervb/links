@@ -1,6 +1,6 @@
 
 app.controller('AddController', 
- function($scope, $http, $location, LinksService){
+ function($scope, $location, LinksService){
 
   $scope.pageClass = 'add-page';
 
