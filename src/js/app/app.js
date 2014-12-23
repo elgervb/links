@@ -6,15 +6,15 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
   $routeProvider
   	.when('/', {
 	  controller: 'LinksController',
-	  templateUrl: '/assets/js/app/modules/links/links.html'
+	  templateUrl: 'assets/js/app/modules/links/links.html'
 	})
   .when('/add', {
     controller: 'AddController',
-    templateUrl: '/assets/js/app/modules/add/add.html'
+    templateUrl: 'assets/js/app/modules/add/add.html'
   })
   .when('/settings', {
     controller: 'SettingsController',
-    templateUrl: '/assets/js/app/modules/settings/settings.html'
+    templateUrl: 'assets/js/app/modules/settings/settings.html'
   });
 
    $locationProvider.html5Mode('true');
