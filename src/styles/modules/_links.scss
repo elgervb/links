@@ -5,7 +5,7 @@ section.search{
   .settings-btn{
     background: transparent url(../img/settings.png) no-repeat center center;
     height: 32px;
-    opacity: .3;
+    opacity: 1;
     position: absolute;
     right: 5px;
     top: 5px;
@@ -14,7 +14,7 @@ section.search{
   }
 
   .settings-btn:hover{
-    opacity: 1;
+    opacity: .3;
   }
 
   .add{

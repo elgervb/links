@@ -22,12 +22,12 @@
 @import 'modules/links';
 
 body{
-  background: url(../img/vinylstack.jpg) no-repeat center center fixed;
-  background-size: cover;
+  overflow: hidden;
 }
-
 // TODO
 .page{
+  background: url(../img/vinylstack.jpg) no-repeat center center fixed;
+  background-size: cover;
 	bottom:0;
 	opacity: 1;
 	position:absolute; 
@@ -39,6 +39,20 @@ body{
 
 .add-page.ng-enter  { animation: slideInRight 0.5s both ease-in; z-index: 8888;}
 .add-page.ng-leave  { animation: slideOutRight 0.5s both ease-in; z-index: 9999;}
+.add-page{
+  background: url(../img/vinyl-scratch.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #FFFFFF;
+}
 
 .settings-page.ng-enter{ animation: slideInUp 0.5s both ease-in; z-index: 8888;}
 .settings-page.ng-leave{ animation: slideOutDown 0.5s both ease-in; z-index: 9999;}
+.settings-page{
+  background: url(../img/vinyl.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #FFFFFF;
+
+  textarea{
+    background: rgba(255,255,255,.6);
+  }
+}
