@@ -73,14 +73,22 @@ gulp.task('clean', function(cb) {
  * Copies all to dist/
  */
 gulp.task('copy', function() {
-    gulp.src( 'src/fonts/**')
-      .pipe(gulp.dest('dist/assets/fonts'));
 
-    gulp.src( ['src/js/app/**/*.html', 'src/js/app/**/*.json'])
-      .pipe(gulp.dest('dist/assets/js/app'));
+  // copy all jpg's as they are not handled by the images task
+   gulp.src( 'src/img/**/*.jpg')
+    .pipe(gulp.dest('dist/assets/img'));
 
-    return gulp.src('src/index.html')
-        .pipe(gulp.dest('dist/'));
+  // copy all fonts
+  gulp.src( 'src/fonts/**')
+    .pipe(gulp.dest('dist/assets/fonts'));
+
+  // copy all html && json
+  gulp.src( ['src/js/app/**/*.html', 'src/js/app/**/*.json'])
+    .pipe(gulp.dest('dist/assets/js/app'));
+
+  // copy the index.html
+  return gulp.src('src/index.html')
+      .pipe(gulp.dest('dist/'));
 });
 
 
@@ -124,8 +132,7 @@ gulp.task('images', function() {
   return gulp.src('src/img/**/*.png')
     .pipe(plumber({errorHandler: onError}))
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('dist/assets/img'))
-    .pipe(notify({ message: 'Images task complete' }));
+    .pipe(gulp.dest('dist/assets/img'));
 });
 
 
@@ -188,8 +195,7 @@ gulp.task('scripts-app', ['docs'], function() {
     .pipe(ngannotate())
     .pipe(gulpif(!argv.dev, uglify()))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist/assets/js'))
-    .pipe(notify({ message: 'Scripts app task complete. Dev=' + !!argv.dev }));
+    .pipe(gulp.dest('dist/assets/js'));
 });
 
 
@@ -201,8 +207,7 @@ gulp.task('scripts-vendor', function() {
   return gulp.src(['src/js/vendor/angularjs/1.3.7/angular.min.js','src/js/vendor/angularjs/1.3.7/angular-route.min.js','src/js/vendor/**/*.js'])
     .pipe(gulp.dest('dist/assets/js/vendor'))
     .pipe(concat('vendor.js'))
-    .pipe(gulp.dest('dist/assets/js/vendor'))
-    .pipe(notify({ message: 'Scripts vendor task complete' }));
+    .pipe(gulp.dest('dist/assets/js/vendor'));
 });
 
 
@@ -218,8 +223,7 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/assets/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(gulp.dest('dist/assets/css'));
 });
 
 
