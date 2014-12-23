@@ -18,16 +18,18 @@ section.search{
   }
 
   .add{
-    box-shadow: 0 0 0 2000000px rgba(255, 255, 255, 0.7);
-    background-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2000000px rgba(255, 255, 255, 0.1);
     left: 50%;
-    opacity: 0.1;
+    opacity: 0.3;
     position: absolute;
     top: 83px;
     transform: translateX(-50%);
     transition: transform 0.3s ease 0s, opacity 1s ease 0s;
 
     &:hover{
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 0 2000000px rgba(255, 255, 255, 0.4);
       opacity: 1;
       transform: translate(-50%, 50%);
       z-index: 101;
@@ -35,11 +37,13 @@ section.search{
       .add-label{
         opacity: 1;
       }
+      .add-btn:hover{
+        box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.8);
+      }
     }
     .add-btn{
       border: 3px solid;
       border-radius: 50%;
-      box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.8);
       display: inline-block;
       font-size: 2em;
       height: 46px;
