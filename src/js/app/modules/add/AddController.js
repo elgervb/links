@@ -17,11 +17,26 @@ app.controller('AddController',
 
   $scope.addTag = function(tag){
 
+    if (!tag){return;}
+
     $scope.link = $scope.link || {};
     $scope.link.tags = $scope.link.tags || [];
-    $scope.link.tags.push(tag);
-    $scope.tag = "";
+
+    //prevent dupes
+    if ($scope.link.tags.indexOf(tag) === -1){
+      $scope.link.tags.push(tag);
+      $scope.tag = "";
+    }
   
+  };
+
+  $scope.addTagWithKey = function(tag, $event){
+
+    if ($event.which === 13){
+      $scope.addTag(tag);
+      $event.preventDefault();
+    }
+
   };
 		
 });
