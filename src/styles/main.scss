@@ -34,7 +34,7 @@ body{
 	top:0;  
 	width:100%; 
 }
-.page.ng-enter 			{ animation: slideInLeft 0.5s both ease-in; z-index: 8888; }
+.page.ng-enter 			{ animation: slideInLeft 0.5s both ease-in; z-index: 10000; }
 .page.ng-leave 			{ animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }
 
 .add-page.ng-enter  { animation: slideInRight 0.5s both ease-in; z-index: 8888;}
