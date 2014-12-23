@@ -78,6 +78,10 @@ section.search{
 }
 
 .links-list{
+
+  @include phone{
+    padding: 4px;
+  }
   
   .link.ng-enter{
     animation: fadeIn 0.3s both ease-in;
@@ -104,6 +108,16 @@ section.search{
     transition: all 0.4s ease 0s ;
     width: 50%;
     z-index: 10;
+
+    @include phone{
+      max-width: 320px;
+      margin: 0;
+      width: 100%;
+    }
+    @include phone-landscape{
+      margin-bottom: 4px;
+      width: 48%;
+    }
 
     &:hover{
       background-color: #4082A0;
