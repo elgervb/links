@@ -1,8 +1,3 @@
-/**
- * Some nice examples:
- * http://thewebistheplatform.com/magic-gulpfiles-part-1/
- */
-
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -26,8 +21,8 @@ var gulp = require('gulp'),
     todo = require('gulp-todo'),
     jsdoc = require("gulp-jsdoc"),
     plumber = require('gulp-plumber'),
-    ngannotate = require('gulp-ng-annotate');
-
+    ngannotate = require('gulp-ng-annotate'),
+    replace = require('gulp-replace');
 
 /**
  * browser-sync task for starting a server. This will open a browser for you. Point multiple browsers / devices to the same url and watch the magic happen.
@@ -138,16 +133,23 @@ gulp.task('images', function() {
  * Start the live reload server. Live reload will be triggered when a file in the `dist` folder or the index.html changes.
  * Depends on: watch
  */
-gulp.task('live-reload', ['watch'], function() {
+gulp.task('live-reload', ['watch'], function(cb) {
 
-  // Create LiveReload server
-  livereload.listen();
+  del(['dist/index.html']);
 
-  // Watch any files in dist/* & index.html, reload on change
-  gulp.watch(['dist/**', 'index.html']).on('change', livereload.changed);
+  // add livereload script to the index.html
+  gulp.src(['src/index.html'])
+   .pipe(replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1"))
+   .pipe(gulp.dest('dist'));
 
-  console.log('To enable live reload, you can place following script in your page or use the browser plugin')
-  console.log("<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>");
+  // // Create LiveReload server
+  // livereload.listen();
+
+  // // Watch any files in dist/* & index.html, reload on change
+  // gulp.watch(['dist/**', 'index.html']).on('change', livereload.changed);
+
+  // console.log('To enable live reload, you can place following script in your page or use the browser plugin')
+  // console.log("<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>");
 });
 
 
