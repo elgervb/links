@@ -126,7 +126,7 @@ gulp.task('express-lr', ['express', 'live-reload'], function(){});
  * Task to optimize and deploy all images found in folder `src/img/**`. Result is copied to `dist/assets/img`
  */
 gulp.task('images', function() {
-  return gulp.src('src/img/**/*')
+  return gulp.src('src/img/**/*.png')
     .pipe(plumber({errorHandler: onError}))
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('dist/assets/img'))
