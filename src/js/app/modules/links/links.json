@@ -232,6 +232,20 @@
   "visible": true
  },
  {
+  "title": "Pss2 Wouter",
+  "url": "http://pc08667:8070",
+  "tags": [
+   "Pss2",
+   "local",
+   "Wouter Roosendaal",
+   "waroos"
+  ],
+  "guid": "7ae6e6b3-736f-4478-9d4f-b785e6e40e93",
+  "timestamp": 1394194832871,
+  "count": 6,
+  "visible": true
+ },
+ {
   "title": "Pss2 Pim",
   "url": "http://pc08063:8070",
   "tags": [
@@ -1664,11 +1678,10 @@
  {
   "tags": [
    "github",
-   "repository",
    "jsmodal",
    "overlay"
   ],
-  "title": "JSModal Github repository",
+  "title": "JSModal Github",
   "url": "https://github.com/elgervb/JSModal",
   "guid": "d6c0560f-e761-49d7-a591-054c9ebebabf",
   "timestamp": 1419340862526

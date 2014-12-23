@@ -21,7 +21,7 @@ section.search{
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 0 2000000px rgba(255, 255, 255, 0.1);
     left: 50%;
-    opacity: 0.3;
+    opacity: 0.6;
     position: absolute;
     top: 83px;
     transform: translateX(-50%);
@@ -88,13 +88,13 @@ section.search{
   }
 
   .link {
-    background-color: #4082A0;
+    background-color: rgba(64, 130, 160, 0.8); // Color: #4082A0;
     border: 1px solid #fff;
     float: left;
     display: block;
     height: 100px;
-    margin: 0;
-    max-width: 280px;
+    margin: 4px;
+    max-width: 272px;
     min-width: 150px;
     opacity: 1;
     overflow: hidden;
@@ -106,6 +106,7 @@ section.search{
     z-index: 10;
 
     &:hover{
+      background-color: #4082A0;
       transition-delay: .5s;
     }
 
