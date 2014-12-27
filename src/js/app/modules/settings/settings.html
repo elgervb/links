@@ -14,9 +14,9 @@
 
     	</div>
 
-    	<div class="field" >
+    	<div class="field" ng-show="exportData" >
 
-    		<p>JSON <span ng-show="exportData">{{exportData.length}} links</span><p>
+    		<p>JSON <span>{{exportData.length}} links</span><p>
     		<textarea class="export-textarea">{{exportData | json:1}}</textarea>
     		<button class="btn-flat" ng-click="clear()">Clear</button>
 
