@@ -25,6 +25,11 @@ app.service('LinksService', function($http, $q){
       return v.toString(16);
     });
   },
+  /**
+   * Returns all links as a promise
+   * 
+   * @return Promise with links
+   */ 
   getLinks = function(){
     if (localStorage.getItem('local::links')){
       console.log("Returning links from local storage");
@@ -42,7 +47,7 @@ app.service('LinksService', function($http, $q){
   },
   getIndex = function(links, guid){
     // get this index of the link
-     if (links && links.length > 0){
+    if (links && links.length > 0){
       for (var i=0;i<links.length;i++){
         if (links[i].guid === guid){
           return i;
