@@ -7,7 +7,7 @@ app.controller('SettingsController',
   $scope.export = function(){
   	// Get links through the links service
 	  LinksService.getLinks().then(function(links){
-	  	$scope.exportData = links;
+	  	$scope.exportData = angular.fromJson(links);
 	  });
   };
 
