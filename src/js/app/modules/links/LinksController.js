@@ -2,7 +2,10 @@
 app.controller('LinksController', 
   function($scope, $timeout, LinksService){
 
+    // init page css class
     $scope.pageClass = 'links-page';
+    // init search from localStorage (if any)
+    $scope.searchLinks = localStorage.getItem('local.links.search');
 
     loadLinks();
 
@@ -43,6 +46,12 @@ app.controller('LinksController',
       }
 
     };
+
+    $scope.$watch('searchLinks',function(newValue, oldValue){
+      if (newValue !== oldValue){
+        localStorage.setItem('local.links.search', newValue);
+      }
+    });
 
     function loadLinks(){
        // get links and sort them by title
