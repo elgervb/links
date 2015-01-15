@@ -1806,5 +1806,17 @@
   ],
   "guid": "ed4d3d29-2ccf-474f-bc70-b162303668de",
   "timestamp": 1421061809910
+ },
+ {
+  "title": "GitHub JS API wrapper",
+  "tags": [
+   "github",
+   "wrapper",
+   "api",
+   "javascript"
+  ],
+  "url": "https://github.com/philschatz/octokat.js",
+  "guid": "8c7b5d5e-4072-48e0-9a11-47dd92b8e23f",
+  "timestamp": 1421324975343
  }
 ]
