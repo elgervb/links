@@ -15,6 +15,10 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
   .when('/settings', {
     controller: 'SettingsController',
     templateUrl: 'assets/js/app/modules/settings/settings.html'
+  })
+  .when('/login', {
+    controller: 'LoginController',
+    templateUrl: 'assets/js/app/modules/login/login.html'
   });
 
    $locationProvider.html5Mode('true');
