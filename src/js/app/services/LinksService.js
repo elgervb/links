@@ -2,8 +2,8 @@
  * Service to access links
  */
 app.service('LinksService', function($http, $q){
-
-  var addLink = function(link){
+  var baseUrl = 'http://localhost/git/REST-api/',
+  addLink = function(link){
 
     var links = JSON.parse( localStorage.getItem('local::links') );
     links.push(link);
@@ -13,8 +13,8 @@ app.service('LinksService', function($http, $q){
     save(links);
 
     var request = $http({
-      method: "post",
-      url: 'server/links/add',
+      method: "POST",
+      url: baseUrl + 'links',
       data: link
     });
     return( request.then( handleSuccess, handleError ) );
@@ -40,8 +40,8 @@ app.service('LinksService', function($http, $q){
     
     console.log("Returning links from server");
     var request = $http({
-      method: "get",
-      url: 'assets/js/app/modules/links/links.json'
+      method: "GET",
+      url: baseUrl + 'links'
     });
     return( request.then( handleSuccess, handleError ) );
   },
