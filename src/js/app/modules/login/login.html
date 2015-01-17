@@ -1,20 +1,29 @@
 
 	<section class="login">
 
-        <header>
-            <h2>Login</h2>
-        </header> 
-        <form method="post" action="" class="form"> 
+        <form method="post" action="" class="form" ng-class="{shake: error}"> 
+
+            <header>
+                <h2>Login</h2>
+            </header> 
+
+            <div class="field error" ng-show="error">
+                Error signing in. Please try again...
+            </div> 
+            
             <div class="field">
                 <label for="username">Username</label> 
-                <input type="text" id="username" placeholder="username" autocomplete="off"> 
+                <input type="text" id="username" placeholder="username" autocomplete="off" ng-model="username"> 
             </div> 
+
             <div class="field">
                 <label for="password">Password</label> 
-                <input type="password" id="password" placeholder="password" autocomplete="off"> 
+                <input type="password" id="password" placeholder="password" autocomplete="off" ng-model="password"> 
             </div> 
+
             <div class="field buttons">
                 <button class="btn-login" type="submit">Login</button>
             </div>
+
         </form>
     </section>

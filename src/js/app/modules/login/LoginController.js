@@ -4,4 +4,7 @@ app.controller('LoginController',
 
   $scope.pageClass = 'login-page';
 
+  // set when having an error
+  // $scope.error = true;
+
 });
