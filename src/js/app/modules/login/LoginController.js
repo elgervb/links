@@ -1,10 +1,15 @@
 
 app.controller('LoginController', 
- function($scope, $location){
+ function($scope, $timeout){
 
   $scope.pageClass = 'login-page';
 
-  // set when having an error
-  // $scope.error = true;
+  $scope.login = function(){
+  	$scope.error = false;
 
+  	// use timeout to shake the form each time when an error occures
+  	$timeout(function(){
+  		$scope.error = true;
+  	}, 10);
+  }
 });
