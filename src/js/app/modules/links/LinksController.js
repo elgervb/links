@@ -56,7 +56,7 @@ app.controller('LinksController',
     function loadLinks(){
        // get links and sort them by title
       LinksService.getLinks().then(function(links){
-        if (links){
+        if (angular.isArray(links)){
           $scope.links = links.sort(function compare(a,b) {
               if (a.title < b.title)
                  return -1;
