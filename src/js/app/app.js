@@ -25,6 +25,7 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
 
 }); // end config
 
+app.value('baseUrl', 'http://localhost/git/REST-api/');
 
 app.filter("hideEmpty", function(){ 
   return function(object, query){
