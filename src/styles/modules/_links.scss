@@ -102,12 +102,19 @@ section.search{
     min-width: 150px;
     opacity: 1;
     overflow: hidden;
-    padding: 0 1% 1% 0;
     position: relative;
     text-align: left;
     transition: all 0.4s ease 0s ;
     width: 50%;
     z-index: 10;
+
+    .click-count{
+      font-size: 2em;
+      opacity: .5;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
     @include phone{
       max-width: 320px;
