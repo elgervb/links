@@ -20,7 +20,7 @@
   <section class="list">
 
     <ul class="links-list">
-      <li class="link" ng-repeat="link in links  | hideEmpty:searchLinks | filterLinks:searchLinks track by $index" ng-click="redirect(link)">  
+      <li class="link" ng-repeat="link in links  | hideEmpty:searchLinks | linksFilter:searchLinks track by $index" ng-click="redirect(link)">  
           <div class="click-count">{{link.count}}</div>
           <div class="link-body img">
             <p class="title">{{link.title}}</p> 

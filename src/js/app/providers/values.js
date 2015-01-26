@@ -1,0 +1,1 @@
+app.value('baseUrl', 'http://localhost/git/REST-api/');
