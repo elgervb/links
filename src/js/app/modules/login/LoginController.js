@@ -9,16 +9,10 @@ app.controller('LoginController',
 
     AuthService.login($scope.login.username, $scope.login.password)
     .then(
-     	function(response){
-     		if (response.status === 204){
-     			$scope.error = true;
-  	   		$scope.login.username = "";
-  	   		$scope.login.password = "";
-     			return;
-     		}
-     		var user = response.data;
+     	function(user){ // success
+     		console.dir(user);
      	},
-     	function(response){
+     	function(){ // failure
      		$scope.error = true;
      		$scope.login.username = "";
      		$scope.login.password = "";
