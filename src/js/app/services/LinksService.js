@@ -1,9 +1,8 @@
 /**
  * Service to access links
  */
-app.service('LinksService', function($http, $q){
-  var baseUrl = 'http://localhost/git/REST-api/',
-  addLink = function(link){
+app.service('LinksService', function($http, $q, baseUrl){
+  var addLink = function(link){
 
     var links = JSON.parse( localStorage.getItem('local::links') );
     links.push(link);
