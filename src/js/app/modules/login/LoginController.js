@@ -13,6 +13,7 @@ app.controller('LoginController',
   	$http({
       method: "POST",
       url: url,
+      withCredentials: true,
       data: {
       	username: $scope.login.username,
       	password: $scope.login.password
