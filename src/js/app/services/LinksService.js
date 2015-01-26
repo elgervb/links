@@ -13,6 +13,7 @@ app.service('LinksService', function($http, $q){
     var request = $http({
       method: "POST",
       url: baseUrl + 'links',
+      withCredentials: true,
       data: link
     });
     return( request.then( handleSuccess, handleError ) );
@@ -33,6 +34,7 @@ app.service('LinksService', function($http, $q){
     console.log("Returning links from server");
     var request = $http({
       method: "GET",
+      withCredentials: true,
       url: baseUrl + 'links'
     });
     return( request.then( handleSuccess, handleError ) );
