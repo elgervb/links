@@ -38,12 +38,13 @@ section.search{
         opacity: 1;
       }
       .add-btn:hover{
-        box-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.8);
+        qbox-shadow: 0 0 60px 60px rgba(255, 255, 255, 0.8);
       }
     }
     .add-btn{
       border: 3px solid;
       border-radius: 50%;
+      color: #fff;
       display: inline-block;
       font-size: 2em;
       height: 46px;
@@ -51,8 +52,9 @@ section.search{
       width: 46px;
     }
     .add-label{
-       color: #4082a0;
+       color: #fff;
        opacity: 0;
+       text-shadow: 1px 1px 1px #666;
     }
   }
   .search-links{
