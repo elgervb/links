@@ -110,7 +110,7 @@ section.search{
 
     @include phone{
       max-width: 320px;
-      margin: 0;
+      margin: 0 0 10px 0;
       width: 100%;
     }
     @include phone-landscape{
