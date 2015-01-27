@@ -26,6 +26,6 @@
 
  	return {
  		login : login
- 	}
+ 	};
 
  });

@@ -18,5 +18,5 @@ app.controller('LoginController',
      		$scope.login.password = "";
      	}
      );
-  }
+  };
 });
