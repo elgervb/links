@@ -27,7 +27,7 @@
                 <label for="fullname">Full name</label> 
                 <input type="text" id="fullname" name="fullname" placeholder="Your full name" autocomplete="off" ng-model="user.fullname" required> 
 
-                 <div ng-show="form.$submitted || form.username.$touched">
+                 <div ng-show="form.$submitted || form.fullname.$touched">
                   <span ng-show="form.fullname.$error.required">Please fill in your name.</span>
                 </div>
             </div> 
