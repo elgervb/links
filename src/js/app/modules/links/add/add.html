@@ -1,7 +1,7 @@
 
 	<section class="add">
 
-    <form method="post" ng-submit="submit()" class="add-form">
+    <form method="post" name="form" ng-submit="submit()" class="add-form" novalidate>
 
   		<div class="field">
         <label for="title">Title</label>
@@ -10,7 +10,12 @@
 
       <div class="field">
         <label for="url">Url</label>
-        <input type="url" id="url" placeholder="url" required ng-model="link.url"/>
+        <input type="url" id="url" name="url" placeholder="url" required ng-model="link.url"/>
+
+         <div ng-show="form.$submitted || form.url.$touched" class="error">
+           <span ng-show="form.url.$error.required">Please fill in link url</span>
+           <span ng-show="form.url.$error.url">This is not a valid url</span>
+         </div>
       </div>
 
       <div class="field">
