@@ -10,7 +10,7 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
 	})
   .when('/add', {
     controller: 'AddController',
-    templateUrl: 'assets/js/app/modules/add/add.html'
+    templateUrl: 'assets/js/app/modules/links/add/add.html'
   })
   .when('/settings', {
     controller: 'SettingsController',
