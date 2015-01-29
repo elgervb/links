@@ -3,6 +3,8 @@
 
         <form class="form" ng-class="{shake: error}" ng-submit="login()"> 
 
+            <a class="btn-cancel" ng-click="cancel()">&times;</a>
+
             <header>
                 <h2>Login</h2>
             </header> 
@@ -23,6 +25,10 @@
 
             <div class="field buttons">
                 <button class="btn-login" type="submit">Login</button>
+            </div>
+
+            <div class="field">
+                 <a href="#register">Register</a>
             </div>
 
         </form>

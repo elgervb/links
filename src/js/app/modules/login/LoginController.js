@@ -1,8 +1,12 @@
 
 app.controller('LoginController', 
- function($scope, AuthService){
+ function($scope, $location, AuthService){
 
   $scope.pageClass = 'login-page';
+
+  $scope.cancel = function(){
+    $location.path('/');
+  };
 
   $scope.login = function(){
   	$scope.error = false;
