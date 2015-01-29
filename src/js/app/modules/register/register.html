@@ -1,0 +1,47 @@
+
+	<section class="register login">
+
+        <form class="form" ng-class="{shake: error}" ng-submit="register()"> 
+
+            <a class="btn-cancel" ng-click="cancel()">&times;</a>
+
+            <header>
+                <h2>Register</h2>
+            </header> 
+
+            <div class="field error" ng-show="error">
+                Error
+            </div> 
+            
+            <div class="field">
+                <label for="username">Username</label> 
+                <input type="text" id="username" placeholder="Your username" autocomplete="off" ng-model="user.username" required> 
+            </div> 
+
+            <div class="field">
+                <label for="fullname">Full name</label> 
+                <input type="text" id="fullname" placeholder="Your full name" autocomplete="off" ng-model="user.fullname" required> 
+            </div> 
+
+             <div class="field">
+                <label for="email">Email</label> 
+                <input type="email" id="email" placeholder="Email" autocomplete="off" ng-model="user.email" required> 
+            </div> 
+
+            <div class="field">
+                <label for="password">Password</label> 
+                <input type="password" id="password" placeholder="Password" autocomplete="off" ng-model="user.password" required> 
+            </div> 
+
+             <div class="field">
+                <label for="passwordretype">Retype Password</label> 
+                <input type="password" id="passwordretype" placeholder="Retype password" autocomplete="off" ng-model="user.passwordretype" required> 
+            </div> 
+
+            <div class="field buttons">
+                
+                <button class="btn-login" type="submit">Register</button>
+            </div>
+
+        </form>
+    </section>
