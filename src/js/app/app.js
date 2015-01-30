@@ -18,11 +18,11 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
   })
   .when('/login', {
     controller: 'LoginController',
-    templateUrl: 'assets/js/app/modules/login/login.html'
+    templateUrl: 'assets/js/app/modules/user/login/login.html'
   })
   .when('/register', {
     controller: 'RegisterController',
-    templateUrl: 'assets/js/app/modules/register/register.html'
+    templateUrl: 'assets/js/app/modules/user/register/register.html'
   });
 
    $locationProvider.html5Mode('true');
