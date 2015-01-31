@@ -1,7 +1,7 @@
 
 	<section class="register login">
 
-        <form class="form" name="form" ng-class="{shake: error}" ng-submit="register()" novalidate> 
+        <form class="form" ng-hide="registered" name="form" ng-class="{shake: error}" ng-submit="register()" novalidate> 
 
             <a class="btn-cancel" ng-click="cancel()">&times;</a>
 
@@ -10,7 +10,7 @@
             </header> 
 
             <div class="field error" ng-show="error">
-                Error
+                {{error}}
             </div> 
             
             <div class="field">
@@ -72,4 +72,17 @@
             </div>
 
         </form>
+
+        <div ng-show="registered">
+
+            <a class="btn-cancel" ng-click="cancel()">&times;</a>
+
+            <header>
+                <h2>Registered</h2>
+            </header> 
+
+            <p>Thanks for registering. A verification mail has been sent to {{user.email}}. Please use it to acivate your account.</p>
+
+        </div>
+
     </section>
