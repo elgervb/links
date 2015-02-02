@@ -5,7 +5,7 @@
 	to 		{ transform: translateX(100%); opacity: 0;}
 }
 @keyframes slideOutDown {
-	to 		{ transform: translateY(100%); }
+	to 		{ transform: translateY(-100%); }
 }
 @keyframes fadeOut {
   from  { opacity: 1; }
