@@ -1,21 +1,34 @@
 /**
  * Service to access links
  */
-app.service('LinksService', function($http, $q, baseUrl){
+app.service('LinksService', function($http, $q, baseUrl, SettingsService){
+
+  /**
+   * Stores a link
+   * @return Promise with the newly added link
+   */
   var addLink = function(link){
 
-    var links = JSON.parse( localStorage.getItem('local::links') );
+    var links = JSON.parse( localStorage.getItem('local::links') ) || [];
     links.push(link);
     
     save(links);
 
-    var request = $http({
-      method: "POST",
-      url: baseUrl + 'links',
-      withCredentials: true,
-      data: link
-    });
-    return( request.then( handleSuccess, handleError ) );
+    // check for login
+    if (SettingsService.user()){
+      var request = $http({
+        method: "POST",
+        url: baseUrl + SettingsService.user().username + '/links',
+        withCredentials: true,
+        data: link
+      });
+      return( request.then( handleSuccess, handleError ) );
+    }
+    else{
+      return $q(function(resolve, reject) {
+        resolve( link ) ;
+      });
+    }
   },
   /**
    * Returns all links as a promise
@@ -30,13 +43,21 @@ app.service('LinksService', function($http, $q, baseUrl){
       });
     }
     
-    console.log("Returning links from server");
-    var request = $http({
-      method: "GET",
-      withCredentials: true,
-      url: baseUrl + 'links'
-    });
-    return( request.then( handleSuccess, handleError ) );
+    // check for login
+    if (SettingsService.user()){
+      console.log("Returning links from server");
+      var request = $http({
+        method: "GET",
+        withCredentials: true,
+        url: baseUrl + SettingsService.user().username + '/links'
+      });
+      return( request.then( handleSuccess, handleError ) );
+      }
+    else{
+      return $q(function(resolve, reject) {
+        resolve(  ) ; // no links present
+      });
+    }
   },
   getIndex = function(links, guid){
     // get this index of the link

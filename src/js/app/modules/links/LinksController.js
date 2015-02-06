@@ -1,11 +1,12 @@
 
 app.controller('LinksController', 
-  function($scope, $timeout, LinksService){
+  function($scope, $timeout, LinksService, SettingsService){
 
     // init page css class
     $scope.pageClass = 'links-page';
     // init search from localStorage (if any)
     $scope.searchLinks = localStorage.getItem('local.links.search');
+    $scope.user = SettingsService.user();
 
     loadLinks();
 

@@ -1,6 +1,6 @@
 
 app.controller('LoginController', 
- function($scope, $location, AuthService){
+ function($scope, $location, AuthService, SettingsService){
 
   $scope.pageClass = 'login-page';
 
@@ -15,6 +15,7 @@ app.controller('LoginController',
     .then(
      	function(user){ // success
      		console.dir(user);
+        SettingsService.user(user);
      	},
      	function(){ // failure
      		$scope.error = true;
