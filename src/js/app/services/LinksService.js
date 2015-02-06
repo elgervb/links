@@ -10,9 +10,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
   var addLink = function(link){
 
     var links = JSON.parse( localStorage.getItem('local::links') ) || [];
-    links.push(link);
     
-    save(links);
 
     // check for login
     if (SettingsService.user()){
@@ -22,7 +20,14 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
         withCredentials: true,
         data: link
       });
-      return( request.then( handleSuccess, handleError ) );
+      return( request.then( function handleSuccess( response ) {
+
+        // save the just added link
+        links.push(response.data);
+        save(links);
+
+        return( response.data );
+      }, handleError ) );
     }
     else{
       return $q(function(resolve, reject) {
