@@ -98,7 +98,6 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
    * Handle success
    */
   function handleSuccess( response ) {
-    localStorage.setItem('local::links', JSON.stringify( response.data ) );
     return( response.data );
   }
 
