@@ -3,6 +3,8 @@ app.controller('AddController',
  function($scope, $location, LinksService){
 
   $scope.pageClass = 'add-page';
+  $scope.link = {};
+  $scope.link.ispublic = 1; // enable by default
 
   $scope.submit = function(){
     console.dir($scope.link);
