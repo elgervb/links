@@ -16,6 +16,7 @@ app.controller('LoginController',
      	function(user){ // success
      		console.dir(user);
         SettingsService.user(user);
+        $location.path('/');
      	},
      	function(){ // failure
      		$scope.error = true;
