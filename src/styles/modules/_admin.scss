@@ -1,0 +1,29 @@
+.admin-page ol.extended{
+  color: #000;
+  opacity: .8;
+
+  li{
+    cursor: pointer;
+
+    &.title{
+      cursor: default;
+    }
+
+    &.selected{
+      background-color: #BFD2FC;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+  
+  .link-title{
+    font-size: 1.6em;
+    padding-bottom: 5px;
+  }
+  .url{
+    color: #999;
+    font-size: .8em;
+  }
+
+
+}

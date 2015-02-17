@@ -1,0 +1,43 @@
+
+<section>
+
+<div class="col-30">
+
+<ol class="extended">
+  <li class="title"><h3>Links</h3></li>
+  <li ng-repeat="(index, link) in links" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
+    <p class="link-title">{{link.title}}</p>
+
+    <p class="url">{{link.url}}</p>
+    <p class="date">{{link.timestamp | timestampFilter}}</p>
+
+  </li>
+</ol>
+
+</div>
+
+<div class="col-70">
+  
+  <h1>Link: {{selection.guid}}</h1>
+
+  <button class="btn-flat-red" ng-click="launch(selection)">Launch</button>
+
+  <div class="field">
+    <p>{{selection.title}}</p>
+  </div>
+  <div class="field">
+    <p>{{selection.count}}</p>
+    </div>
+  <div class="field">
+    <p>{{selection.ispublic}}</p>
+    </div>
+  <div class="field">
+    <p>{{selection.tags}}</p>
+    </div>
+
+  <p><pre>{{selection | json:4}}</pre></p>
+
+</div>
+
+ 
+</section>

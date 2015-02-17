@@ -23,6 +23,11 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
   .when('/register', {
     controller: 'RegisterController',
     templateUrl: 'assets/js/app/modules/user/register/register.html'
+  })
+
+  .when('/admin', {
+    controller: 'AdminController',
+    templateUrl: 'assets/js/app/modules/links/admin/admin.html'
   });
 
    $locationProvider.html5Mode('true');
