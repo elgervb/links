@@ -24,14 +24,16 @@ var gulp = require('gulp'),
     ngannotate = require('gulp-ng-annotate'),
     replace = require('gulp-replace');
 
+var options = {liveReload: false};
+
 /**
  * browser-sync task for starting a server. This will open a browser for you. Point multiple browsers / devices to the same url and watch the magic happen.
  * Depends on: watch
  */
 gulp.task('browser-sync', ['watch'], function() {
 
-  // Watch any files in dist/* & index.html, reload on change
-  gulp.watch(['dist/**', 'index.html']).on('change', function(){browserSync.reload({});notify({ message: 'Reload browser' });});
+  // Watch any files in dist/*, reload on change
+  gulp.watch(['dist/**']).on('change', function(){browserSync.reload({});notify({ message: 'Reload browser' });});
 
   return browserSync({
       server: {
@@ -75,7 +77,7 @@ gulp.task('clean', function(cb) {
 gulp.task('copy', function() {
 
   // copy all jpg's as they are not handled by the images task
-   gulp.src( 'src/img/**/*.jpg')
+  gulp.src( 'src/img/**/*.jpg')
     .pipe(gulp.dest('dist/assets/img'));
 
   // copy all fonts
@@ -87,8 +89,9 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('dist/assets/js/app'));
 
   // copy the index.html
-  return gulp.src('src/index.html')
-      .pipe(gulp.dest('dist/'));
+   return gulp.src('src/index.html')
+    .pipe(gulpif(options.liveReload, replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1")))
+    .pipe(gulp.dest('dist/'));
 });
 
 
@@ -103,7 +106,7 @@ gulp.task('default', ['build']);
  * Generate docs from all application javascript
  */
 gulp.task('docs', function() {
-  gulp.src("./src/js/app/**/*.js")
+  return gulp.src("./src/js/app/**/*.js")
     .pipe(jsdoc('./docs'))
 });
 
@@ -129,42 +132,33 @@ gulp.task('express-lr', ['express', 'live-reload'], function(){});
  * Task to optimize and deploy all images found in folder `src/img/**`. Result is copied to `dist/assets/img`
  */
 gulp.task('images', function() {
-  return gulp.src('src/img/**/*.png')
-    .pipe(plumber({errorHandler: onError}))
+  return gulp.src('src/img/**/*')
+    .pipe(plumber())
     .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
     .pipe(gulp.dest('dist/assets/img'));
 });
 
 
 /**
- * Start the live reload server. Live reload will be triggered when a file in the `dist` folder or the index.html changes.
+ * Start the live reload server. Live reload will be triggered when a file in the `dist` folder changes. This will add a live-reload script to the index.html page, which makes it all happen.
  * Depends on: watch
  */
-gulp.task('live-reload', ['watch'], function(cb) {
+gulp.task('live-reload', ['watch'], function() {
 
+  options.liveReload = true;
+  // first, delete the index.html from the dist folder as we will copy it later
   del(['dist/index.html']);
 
   // add livereload script to the index.html
   gulp.src(['src/index.html'])
    .pipe(replace(/(\<\/body\>)/g, "<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>$1"))
    .pipe(gulp.dest('dist'));
+   
+  // Create LiveReload server
+  livereload.listen();
 
-  // // Create LiveReload server
-  // livereload.listen();
-
-  // // Watch any files in dist/* & index.html, reload on change
-  // gulp.watch(['dist/**', 'index.html']).on('change', livereload.changed);
-
-  // console.log('To enable live reload, you can place following script in your page or use the browser plugin')
-  // console.log("<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1\"></' + 'script>')</script>");
-});
-
-
-/**
- * Removes the node_modules
- */
-gulp.task('remove',['clean'], function(cb){
-  del('node_modules', cb);
+  // Watch any files in dist/*, reload on change
+  gulp.watch(['dist/**']).on('change', livereload.changed);
 });
 
 
@@ -177,6 +171,14 @@ gulp.task('scripts', ['scripts-app','scripts-vendor']);
 
 
 /**
+ * Removes the node_modules
+ */
+gulp.task('remove',['clean'], function(cb){
+  del('node_modules', cb);
+});
+
+
+/**
  * Minifies all javascript found in the `src/js/**` folder. All files will be concatenated into `app.js`.  Minified and non-minified versions are copied to the dist folder.
  * This will also generete sourcemaps for the minified version.
  *
@@ -184,9 +186,12 @@ gulp.task('scripts', ['scripts-app','scripts-vendor']);
  */
 gulp.task('scripts-app', ['docs'], function() {
   return gulp.src('src/js/app/**/*.js')
-    .pipe(plumber({errorHandler: onError}))
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(jshint())
+    .on('error', notify.onError(function (error) {
+      return error.message;
+     }))
     .pipe(jshint.reporter(stylish))
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist/assets/js'))
@@ -194,6 +199,7 @@ gulp.task('scripts-app', ['docs'], function() {
     .pipe(gulpif(!argv.dev, stripDebug()))
     .pipe(ngannotate())
     .pipe(gulpif(!argv.dev, uglify()))
+    .on('error', handleError)
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist/assets/js'));
 });
@@ -204,7 +210,7 @@ gulp.task('scripts-app', ['docs'], function() {
  */
 gulp.task('scripts-vendor', function() {
     // script must be included in the right order. First include angular, then angular-route
-  return gulp.src(['src/js/vendor/angularjs/1.3.7/angular.min.js','src/js/vendor/angularjs/1.3.7/angular-route.min.js','src/js/vendor/**/*.js'])
+  return gulp.src(['src/js/vendor/angularjs/1.3.0/angular.min.js','src/js/vendor/angularjs/1.3.0/angular-route.min.js','src/js/vendor/**/*.js'])
     .pipe(gulp.dest('dist/assets/js/vendor'))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('dist/assets/js/vendor'));
@@ -217,9 +223,11 @@ gulp.task('scripts-vendor', function() {
  */
 gulp.task('styles', function() {
   return gulp.src('src/styles/main.scss')
-    .pipe(plumber({errorHandler: onError}))
+    .pipe(plumber())
     .pipe(sass({ style: 'expanded' }))
+    .on('error', handleError)
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .on('error', handleError)
     .pipe(gulp.dest('dist/assets/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
@@ -232,7 +240,7 @@ gulp.task('styles', function() {
  */
 gulp.task('todo', function() {
     gulp.src('src/js/app/**/*.js')
-      .pipe(plumber({errorHandler: onError}))
+      .pipe(plumber())
       .pipe(todo())
       .pipe(gulp.dest('./')) //output todo.md as markdown
       .pipe(todo.reporter('json', {fileName: 'todo.json'}))
@@ -241,7 +249,7 @@ gulp.task('todo', function() {
 
 
 /**
- * Watches changes to Sass, javascript and images. On change this will run the appropriate task, either: styles, scripts or images. 
+ * Watches changes to template, Sass, javascript and image files. On change this will run the appropriate task, either: copy styles, scripts or images. 
  */
 gulp.task('watch', function() {
 
@@ -259,18 +267,13 @@ gulp.task('watch', function() {
 
   // Watch image files
   gulp.watch('src/img/**/*', ['images']);
-
-  // data
-  gulp.watch('src/js/app/**/*.json', ['copy']);
 });
 
-var onError = function(err) {
-    notify.onError({
-                title:    "Gulp",
-                subtitle: "Failure!",
-                message:  "Error: <%= error.message %>",
-                sound:    "Beep"
-            })(err);
+
+function handleError (error) {
+
+    //If you want details of the error in the console
+    console.log(error.toString());
 
     this.emit('end');
-};
+}
