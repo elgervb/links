@@ -16,4 +16,17 @@ app.controller('RegisterController',
   		$scope.error = msg;
   	});
   };
+
+  $scope.submitActivation = function(activationCode){
+    $scope.isSubmitting = true;
+    UserService.activate(activationCode).then(
+      function(){
+        // redirect to login form
+        $location.path('/login');
+      }, 
+      function(msg){
+        $scope.activationerror = msg;
+        $scope.isSubmitting = false;
+      });
+  };
 });
