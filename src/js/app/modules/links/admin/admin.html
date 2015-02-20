@@ -4,8 +4,10 @@
 <div class="col-30">
 
 <ol class="extended">
-  <li class="title"><h3>Links</h3></li>
-  <li ng-repeat="(index, link) in links" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
+  <li class="title field">
+    <input type="text" ng-model="filterlinks" class="filter-links" placeholder="Filter:links"/>
+  </li>
+  <li ng-repeat="(index, link) in links | filter:filterlinks" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
     <p class="link-title">{{link.title}}</p>
 
     <p class="url">{{link.url}}</p>

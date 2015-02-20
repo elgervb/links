@@ -1,6 +1,8 @@
 .admin-page ol.extended{
+  border-radius: 0;
   color: #000;
   opacity: .8;
+  overflow-y: auto;
 
   li{
     cursor: pointer;
@@ -25,5 +27,7 @@
     font-size: .8em;
   }
 
-
+  .filter-links{
+    width: 100%;
+  }
 }
