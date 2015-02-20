@@ -9,6 +9,12 @@
 
     &.title{
       cursor: default;
+      background-color: #F8B451;
+
+      &:before{
+        background-color: #F8B451;
+        content: " ";
+      }
     }
 
     &.selected{
@@ -22,9 +28,10 @@
     font-size: 1.6em;
     padding-bottom: 5px;
   }
-  .url{
+  .date{
     color: #999;
     font-size: .8em;
+    padding-bottom: 0;
   }
 
   .filter-links{
