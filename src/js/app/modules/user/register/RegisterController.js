@@ -25,8 +25,9 @@ app.controller('RegisterController',
         $location.path('/login');
       }, 
       function(msg){
-        $scope.activationerror = msg;
+        $scope.activationerror = msg || "Activation code not found";
         $scope.isSubmitting = false;
+        $scope.activationCode = null;
       });
   };
 });

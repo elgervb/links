@@ -67,32 +67,10 @@
             </div>
 
             <div class="field buttons">
-                
-                <button class="btn-login" type="submit">Register</button>
+                <button class="btn-login" type="submit" ng-disabled="!form.$valid">Register</button>
             </div>
 
         </form>
 
-        <div ng-show="registered">
-
-            <a class="btn-cancel" ng-click="cancel()">&times;</a>
-
-            <header>
-                <h2>Registered</h2>
-            </header> 
-
-            <p>Thanks for registering. A verification mail has been sent to your email {{user.email}}. Please use it to activate your account.</p>
-
-             <div class="field error" ng-show="error">
-                {{activationerror}}
-            </div>
-
-            <p>Your activation code</p>
-            <div class="field">
-                <input type="text" class="activaton-code" ng-model="activationCode" placeholder="goes here" />
-                <button ng-show="activationCode" class="btn-flat-red submit-activation" ng-disabled="isSubmitting" ng-click="submitActivation(activationCode)">Activate</button>
-            </div>
-
-        </div>
-
+       <ng-include src="'assets/js/app/modules/user/register/activation.html'"></ng-include>
     </section>
