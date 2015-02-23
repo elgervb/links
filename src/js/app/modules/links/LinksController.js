@@ -10,6 +10,9 @@ app.controller('LinksController',
 
     loadLinks();
 
+    /**
+     * Redirect to the url of the link provided
+     */
     $scope.redirect = function(link){
       $timeout(function(){
         if (!link.count){
@@ -22,6 +25,9 @@ app.controller('LinksController',
       window.open(link.url, '_blank').focus();
     };
 
+    /**
+     * Returns all tags as an array
+     */
     $scope.getTags = function(tags){
       console.log('get tags');
       if (tags){
@@ -29,16 +35,24 @@ app.controller('LinksController',
       } 
     };
 
+    /**
+     * Search on tags when clicking one
+     */
     $scope.clickTag = function(tag, $event){
       $event.preventDefault();
       $event.stopImmediatePropagation();
       $scope.searchLinks = tag;
     };
 
+    /**
+     * Some actions for keypress events
+     * - ESC key: clear the search box and focus it
+     * - CTRL + f: foxus the search box
+     */ 
     $scope.onKeyPress = function($event){
       
       // clear & focus search box 
-      if ($event.keyCode === 27){
+      if ($event.keyCode === 27){ // esc key
         $scope.searchLinks = "";
         document.querySelector('.search-links').focus();
       }
@@ -51,21 +65,27 @@ app.controller('LinksController',
 
     };
 
+    // Watch the search box and presist the last search value
     $scope.$watch('searchLinks',function(newValue, oldValue){
       if (newValue !== oldValue){
         localStorage.setItem('local.links.search', newValue);
       }
     });
 
+    /**
+     * Load all links from the LinksService
+     */
     function loadLinks(){
        // get links and sort them by title
       LinksService.getLinks().then(function(links){
         if (angular.isArray(links)){
           $scope.links = links.sort(function compare(a,b) {
-              if (a.title < b.title)
+              if (a.title < b.title){
                  return -1;
-              if (a.title > b.title)
+              }
+              if (a.title > b.title){
                 return 1;
+              }
               return 0;
             });
         }
