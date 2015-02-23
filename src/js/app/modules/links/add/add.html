@@ -24,7 +24,7 @@
         <button type="button" class="btn-circle btn-add-tag" ng-click="addTag(tag)" >+</button>
         <div class="field">
           <div class="tag" ng-repeat="tag in link.tags">
-            {{tag}} 
+            {{tag}}
             <span class="close">&times;</span>
           </div>
         </div>
@@ -41,7 +41,7 @@
       <div class="field">
 
         <a class="btn-flat" ng-click="cancel()">Cancel</a>
-        <button  type="submit" class="btn-flat-red">Submit</button>
+        <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid">Submit</button>
 
       </div>
 

@@ -29,6 +29,9 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
       }, handleError ) );
     }
     else{
+      // save the just added link
+      links.push(link);
+      save(links);
       return $q(function(resolve, reject) {
         resolve( link ) ;
       });
