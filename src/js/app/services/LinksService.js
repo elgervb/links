@@ -10,7 +10,6 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
   var addLink = function(link){
 
     var links = JSON.parse( localStorage.getItem('local::links') ) || [];
-    
 
     // check for login
     if (SettingsService.user()){
