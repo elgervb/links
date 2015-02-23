@@ -6,7 +6,7 @@
   <li class="title field">
     <input type="text" ng-model="filterlinks" class="filter-links" placeholder="Filter:links"/>
   </li>
-  <li ng-repeat="(index, link) in links | filter:filterlinks" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
+  <li ng-repeat="(index, link) in links | filter:filterlinks track by $index" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
     <p class="link-title">{{link.title}}</p>
 
     <p class="url">{{link.url}}</p>
@@ -19,23 +19,34 @@
 
 <div class="col-70">
   
-  <h1>Link: {{selection.guid}}</h1>
+  <h1>{{selection.title}}</h1>
 
-  <button class="btn-flat-red" ng-click="launch(selection)">Launch</button>
 
   <div class="field">
-    <p>{{selection.title}}</p>
+    <label>Title</label>
+    <span class="input" contenteditable ng-model="selection.title">{{selection.title}}<span>
   </div>
-  <div class="field">
-    <p>{{selection.count}}</p>
-    </div>
-  <div class="field">
-    <p>{{selection.ispublic}}</p>
-    </div>
-  <div class="field">
-    <p>{{selection.tags}}</p>
-    </div>
 
+  <div class="field">
+    <label>Url</label>
+    <span class="input" contenteditable ng-model="selection.url">{{selection.url}}<span>
+  </div>
+
+  <div class="field buttons">
+    <button class="btn-flat-red" ng-click="save(selection)">Save</button>
+  </div>
+
+
+
+  <div class="field buttons">
+    <button class="btn-flat-red" ng-click="launch(selection)">Launch</button>
+  </div>
+
+  <div>
+
+  </div>
+
+  <h3>JSON</h3>
   <p><pre>{{selection | json:4}}</pre></p>
 
 </div>

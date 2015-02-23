@@ -13,6 +13,10 @@ app.controller('AdminController',
     }
   });
 
+  $scope.save = function(link){
+    LinksService.update(link);
+  };
+  
   $scope.launch = function(link){
       $timeout(function(){
         if (!link.count){

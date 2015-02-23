@@ -89,6 +89,9 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
     localStorage.setItem('local::links', JSON.stringify( links ) );
   },
   update = function(link){
+
+    console.log("updating link with guid: " + link.guid);
+
     var links = JSON.parse( localStorage.getItem('local::links') ),
     index = getIndex(links, link.guid);
     
