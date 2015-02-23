@@ -123,6 +123,10 @@ section.search{
       transition-delay: .5s;
     }
 
+    &.private{
+      background: #366B89 url(../img/lock.png) no-repeat bottom right;
+    }
+
     .click-count{
       font-size: 2em;
       opacity: .5;
