@@ -10,7 +10,7 @@
             </header> 
 
             <div class="field error" ng-show="error">
-                {{error}}
+                <p ng-bind-html="error | htmlFilter"></p>
             </div> 
             
             <div class="field">
