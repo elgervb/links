@@ -19,7 +19,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
         withCredentials: true,
         data: link
       });
-      return( request.then( function handleSuccess( response ) {
+      return( request.then( function( response ) {
 
         // save the just added link
         links.push(response.data);
@@ -55,7 +55,11 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
         withCredentials: true,
         url: baseUrl + SettingsService.user().username + '/links'
       });
-      return( request.then( handleSuccess, handleError ) );
+      return( request.then( function(response){
+        // store in localStorage
+        save(response.data);
+        return response.data;
+      }, handleError ) );
       }
     else{
       return $q(function(resolve, reject) {

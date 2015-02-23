@@ -9,8 +9,10 @@ app.controller('AddController',
   $scope.submit = function(){
     console.dir($scope.link);
 
-    LinksService.addLink($scope.link);
-    $location.path('/');
+    LinksService.addLink($scope.link).then(function(){
+      $location.path('/');
+    });
+    
   };
 
   $scope.cancel = function(){
