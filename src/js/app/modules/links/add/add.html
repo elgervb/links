@@ -3,8 +3,8 @@
 
     <form method="post" name="form" ng-submit="submit()" class="add-form" novalidate>
 
-      <div field type="text" title="'title'" ng-model="link.title" required></div>
-      <div field type="url" title="'url'" ng-model="link.url" required></div>
+      <div field type="text" label="'Title'" name="'title'" ng-model="link.title" required></div>
+      <div field type="url" name="'url'" ng-model="link.url" required></div>
     
 
       <div class="field">
@@ -18,20 +18,12 @@
           </div>
         </div>
       </div>
+      
+      <div field type="boolean" name="'public'" label="'Is public link'" ng-model="link.ispublic" required></div>
 
       <div class="field">
-        <label>Is public link?</label>
-        <div class="switch">
-          <input id="toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" ng-model="link.ispublic" ng-true-value="1">
-          <label for="toggle-2"></label>
-        </div>
-      </div>
-
-      <div class="field">
-
         <a class="btn-flat" ng-click="cancel()">Cancel</a>
         <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid">Submit</button>
-
       </div>
 
     </form>

@@ -3,8 +3,9 @@ app.directive('field', function(){
     require: '^form', // require the parent form
     restrict: 'EA',
     scope: {
-      title: '=',
-      ngModel: '='
+      name: '=',
+      ngModel: '=',
+      label: '=?'
     },
     templateUrl: function(element, attrs){
       return 'assets/js/app/directives/field.'+attrs.type+'.html';
@@ -12,6 +13,7 @@ app.directive('field', function(){
     link: function(scope, element, attrs, formCtrl){
 
       scope.form = formCtrl;
+      scope.label = scope.label || scope.name;
 
       if(!element.hasClass('field')){
         element.addClass('field');

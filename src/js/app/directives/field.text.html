@@ -1,7 +1,7 @@
   
-  <label for="{{title}}"> {{title}} </label> 
-  <input type="text" id="{{title}}" placeholder="{{title}}" name="{{title}}" ng-required='required' ng-model="ngModel" />
+  <label for="{{name}}"> {{label}}  </label> 
+  <input type="text" id="{{name}}" placeholder="{{name}}" name="{{name}}" ng-required='required' ng-model="ngModel" />
 
-  <div ng-show="form.$submitted || form.{{title}}.$touched" class="error">
-     <span ng-show="form.{{title}}.$error.required">Required</span>
+  <div ng-show="form.$submitted || form.{{name}}.$touched" class="error">
+     <span ng-show="form.{{name}}.$error.required">Required</span>
   </div>
