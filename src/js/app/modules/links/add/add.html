@@ -3,20 +3,9 @@
 
     <form method="post" name="form" ng-submit="submit()" class="add-form" novalidate>
 
-  		<div class="field">
-        <label for="title">Title</label>
-        <input type="text" id="title" placeholder="title" required autofocus ng-model="link.title" />
-      </div>
-
-      <div class="field">
-        <label for="url">Url</label>
-        <input type="url" id="url" name="url" placeholder="url" required ng-model="link.url"/>
-
-         <div ng-show="form.$submitted || form.url.$touched" class="error">
-           <span ng-show="form.url.$error.required">Please fill in link url</span>
-           <span ng-show="form.url.$error.url">This is not a valid url</span>
-         </div>
-      </div>
+      <div field type="text" title="'title'" ng-model="link.title" required></div>
+      <div field type="url" title="'url'" ng-model="link.url" required></div>
+    
 
       <div class="field">
         <label for="tag">Tags</label>
