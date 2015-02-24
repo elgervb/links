@@ -1,0 +1,8 @@
+  
+  <label for="{{title}}"> {{title}} </label> 
+  <input type="url" id="{{title}}" name="{{title}}" placeholder="{{title}}" ng-required='required' ng-model="ngModel" />
+
+  <div ng-show="form.$submitted || form.{{title}}.$touched" class="error">
+     <span ng-show="form.{{title}}.$error.required">Required</span>
+     <span ng-show="form.{{title}}.$error.url">This is not a valid url</span>
+  </div>
