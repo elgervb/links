@@ -5,7 +5,7 @@ app.directive('field', function(){
     scope: {
       name: '=',
       ngModel: '=',
-      label: '=?'
+      label: '=?',
     },
     templateUrl: function(element, attrs){
       return 'assets/js/app/directives/field.'+attrs.type+'.html';
@@ -21,6 +21,35 @@ app.directive('field', function(){
 
       if (attrs.required){
         scope.required = "required";
+      }
+
+      // TODO let's find another way of doing this... for now, proceed
+      if (attrs.type === 'collection'){
+
+        scope.addItem = function(item){
+
+          if (!item){return;}
+
+          scope.ngModel = scope.ngModel || {};
+          scope.ngModel.items = scope.ngModel.items || [];
+
+          // prevent dupes
+          if (scope.ngModel.items.indexOf(item) === -1){
+            scope.ngModel.items.push(item.toLowerCase());
+            scope.item = "";
+          }
+        
+        };
+
+        scope.addItemOnKeyPress = function(item, $event){
+
+          if ($event.which === 13){
+            scope.addItem(item);
+            $event.preventDefault();
+          }
+
+        };
+
       }
     }
   };

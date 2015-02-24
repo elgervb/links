@@ -5,19 +5,8 @@
 
       <div field type="text" label="'Title'" name="'title'" ng-model="link.title" required></div>
       <div field type="url" name="'url'" ng-model="link.url" required></div>
-    
-
-      <div class="field">
-        <label for="tag">Tags</label>
-        <input type="tags" id="tag" placeholder="tag" ng-model="tag" ng-keydown="addTagWithKey(tag, $event)" />
-        <button type="button" class="btn-circle btn-add-tag" ng-click="addTag(tag)" >+</button>
-        <div class="field">
-          <div class="tag" ng-repeat="tag in link.tags">
-            {{tag}}
-            <span class="close">&times;</span>
-          </div>
-        </div>
-      </div>
+      <div field type="collection" name="'tags'" ng-model="link.tags" class="tags" required></div>
+     
       
       <div field type="boolean" name="'public'" label="'Is public link'" ng-model="link.ispublic" required></div>
 
