@@ -259,14 +259,15 @@ section.search{
     top: 0;
     width: 22px;
   }
-  
+
   &:hover .close{
     opacity: 1;
   }
 
   .close {
+    cursor: pointer;
     margin-right: 5px;
-    opacity: 1;
+    opacity: 0;
     position: absolute;
     right: 0;
     transition: all 0.3s ease-in 0s;

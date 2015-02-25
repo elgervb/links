@@ -50,6 +50,14 @@ app.directive('field', function(){
 
         };
 
+        scope.removeItem = function(item){
+          var index = scope.ngModel.items.indexOf(item);
+
+          if (index > -1) {
+            scope.ngModel.items.splice(index, 1);
+          }
+        };
+
       }
     }
   };

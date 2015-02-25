@@ -5,6 +5,6 @@
     <div class="field">
       <div class="item" ng-repeat="item in ngModel.items track by $index">
         {{item}}
-        <span class="close">&times;</span>
+        <span class="close" ng-click="removeItem(item)">&times;</span>
       </div>
     </div>
