@@ -54,6 +54,7 @@ app.directive('field', function(){
 
           if (index > -1) {
             scope.ngModel.splice(index, 1);
+            formCtrl.$setDirty();
           }
         };
 
