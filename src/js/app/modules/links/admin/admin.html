@@ -22,19 +22,21 @@
   <h1>{{selection.title}}</h1>
 
 
-  <div class="field">
-    <label>Title</label>
-    <span class="input" contenteditable ng-model="selection.title">{{selection.title}}<span>
-  </div>
+   <form method="post" name="form" ng-submit="save(selection)" novalidate>
 
-  <div class="field">
-    <label>Url</label>
-    <span class="input" contenteditable ng-model="selection.url">{{selection.url}}<span>
-  </div>
+      <div field type="text" label="'Title'" name="'title'" ng-model="selection.title" required></div>
+      <div field type="url" name="'url'" ng-model="selection.url" required></div>
+      <div field type="collection" name="'tags'" ng-model="selection.tags" class="tags" required></div>
+     
+      
+      <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
 
-  <div class="field buttons">
-    <button class="btn-flat-red" ng-click="save(selection)">Save</button>
-  </div>
+      <div class="field">
+        <a class="btn-flat" ng-click="cancel()">Cancel</a>
+        <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid">Submit</button>
+      </div>
+{{form.$invalid}}
+    </form>
 
 
 
