@@ -44,8 +44,14 @@ body{
 
 .add-page.ng-enter, .admin-page.ng-enter  { animation: slideInRight 0.5s both ease-in; z-index: 8888;}
 .add-page.ng-leave, .admin-page.ng-leave  { animation: slideOutRight 0.5s both ease-in; z-index: 9999;}
-.add-page, , .admin-page{
+.add-page{
   background: url(../img/vinyl-scratch.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #FFFFFF;
+}
+
+.admin-page{
+  background: url(../img/vinyl-player.jpg) no-repeat center center fixed;
   background-size: cover;
   color: #FFFFFF;
 }
@@ -61,3 +67,5 @@ body{
     background: rgba(255,255,255,.6);
   }
 }
+
+
