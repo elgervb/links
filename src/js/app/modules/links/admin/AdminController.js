@@ -15,6 +15,7 @@ app.controller('AdminController',
 
   $scope.save = function(link){
     LinksService.update(link);
+    $scope.form.$setPristine();
   };
   
   $scope.launch = function(link){

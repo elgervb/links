@@ -33,7 +33,7 @@
 
       <div class="field">
         <a class="btn-flat" ng-click="cancel()">Cancel</a>
-        <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid">Submit</button>
+        <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
       </div>
       
     </form>
