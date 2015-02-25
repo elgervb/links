@@ -20,7 +20,7 @@
 
 <div class="col-70">
   
-  <h1>{{selection.title}}</h1>
+  <h1>{{selection.title}} <button class="btn-flat btn-pill btn-launch" ng-click="launch(selection)">Launch</button></h1>
 
 
    <form method="post" name="form" ng-submit="save(selection)" novalidate>
@@ -38,12 +38,6 @@
       </div>
       
     </form>
-
-
-
-  <div class="field buttons">
-    <button class="btn-flat-red" ng-click="launch(selection)">Launch</button>
-  </div>
 
   <div>
 
