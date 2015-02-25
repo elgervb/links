@@ -97,15 +97,13 @@ section.search{
     float: left;
     display: block;
     height: 100px;
-    margin: 4px;
-    max-width: 272px;
-    min-width: 150px;
+    margin: 4px .5%;
     opacity: 1;
     overflow: hidden;
     position: relative;
     text-align: left;
     transition: all 0.4s ease 0s ;
-    width: 50%;
+    width: 19%;
     z-index: 10;
 
     @include phone{
@@ -113,9 +111,38 @@ section.search{
       margin: 0 0 10px 0;
       width: 100%;
     }
-    @include phone-landscape{
-      margin-bottom: 4px;
-      width: 48%;
+
+    @include small-tablet{
+      width: 49%;
+    }
+
+    @include tablet{
+      width: 32%;
+    }
+
+    @include responsive(1600px){
+      margin: 4px .3%;
+      width: 13.68%;
+    }
+
+    @include responsive(1900px){
+      margin: 4px .3%;
+      width: 11.9%;
+    }
+
+    @include responsive(2200px){
+      margin: 4px .2%;
+      width: 9.6%;
+    }
+
+    @include responsive(2600px){
+      margin: 4px .2%;
+      width: 7.3%;
+    }
+
+    @include responsive(2600px){
+      margin: 4px .1%;
+      width: 5.6667%;
     }
 
     &:hover{
@@ -142,6 +169,7 @@ section.search{
 
       @include wrap-ellipsis;
     }
+
     .url{
       color: #CECECE;
       cursor: pointer;
