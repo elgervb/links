@@ -59,6 +59,7 @@ app.controller('LinksController',
       // focus search box
       else if($event.ctrlKey && $event.key === "f"){
         document.querySelector('.search-links').focus();
+        document.querySelector('.search-links').select();
         $event.preventDefault();
         $event.stopImmediatePropagation();
       }
