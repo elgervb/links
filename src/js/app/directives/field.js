@@ -30,12 +30,11 @@ app.directive('field', function(){
 
           if (!item){return;}
 
-          scope.ngModel = scope.ngModel || {};
-          scope.ngModel.items = scope.ngModel.items || [];
+          scope.ngModel = scope.ngModel || [];
 
           // prevent dupes
-          if (scope.ngModel.items.indexOf(item) === -1){
-            scope.ngModel.items.push(item.toLowerCase());
+          if (scope.ngModel.indexOf(item) === -1){
+            scope.ngModel.push(item.toLowerCase());
             scope.item = "";
           }
         
@@ -51,10 +50,10 @@ app.directive('field', function(){
         };
 
         scope.removeItem = function(item){
-          var index = scope.ngModel.items.indexOf(item);
+          var index = scope.ngModel.indexOf(item);
 
           if (index > -1) {
-            scope.ngModel.items.splice(index, 1);
+            scope.ngModel.splice(index, 1);
           }
         };
 

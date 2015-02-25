@@ -1,9 +1,10 @@
 
+
     <label for="{{name}}">{{label}}</label>
     <input type="text" id="{{name}}" placeholder="{{name}}" name="{{name}}" ng-model="item" ng-keydown="addItemOnKeyPress(item, $event)" />
     <button type="button" class="btn-circle btn-add-item" ng-click="addItem(item)" >+</button>
     <div class="field">
-      <div class="item" ng-repeat="item in ngModel.items track by $index">
+      <div class="item" ng-repeat="item in ngModel track by $index">
         {{item}}
         <span class="close" ng-click="removeItem(item)">&times;</span>
       </div>
