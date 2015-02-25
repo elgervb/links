@@ -1,5 +1,5 @@
 /**
- * Validates that 2 models are equals.
+ * Validates that 2 models are equal.
  *
  * Use it as follows:
  *
