@@ -1,15 +1,16 @@
 /**
  * Service to access links
  */
-app.service('LinksService', function($http, $q, baseUrl, SettingsService){
+app.service('LinksService', function($http, $q, baseUrl, SettingsService, StorageService){
 
   /**
    * Stores a link
    * @return Promise with the newly added link
    */
-  var addLink = function(link){
+  var store = StorageService.create('local::links'),
+  addLink = function(link){
 
-    var links = JSON.parse( localStorage.getItem('local::links') ) || [];
+    var links = store.get() || [];
 
     // check for login
     if (SettingsService.user()){
@@ -43,10 +44,10 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
    * @return Promise with links
    */ 
   getLinks = function(){
-    if (localStorage.getItem('local::links')){
+    if (store.get()){
       console.log("Returning links from local storage");
       return $q(function(resolve, reject) {
-        resolve( JSON.parse( localStorage.getItem('local::links') ) ) ;
+        resolve( store.get() ) ;
       });
     }
     
@@ -82,17 +83,17 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService){
     return -1;
   },
   reset = function(){
-    localStorage.removeItem('local::links');
+    store.remove();
   },
   save = function(links){
     reset();
-    localStorage.setItem('local::links', JSON.stringify( links ) );
+    store.set( links );
   },
   update = function(link){
 
     console.log("updating link with guid: " + link.guid);
 
-    var links = JSON.parse( localStorage.getItem('local::links') ),
+    var links = store.get(),
     index = getIndex(links, link.guid);
     
     links[index] = link;
