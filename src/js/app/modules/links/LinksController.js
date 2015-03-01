@@ -15,11 +15,7 @@ app.controller('LinksController',
      */
     $scope.redirect = function(link){
       $timeout(function(){
-        if (!link.count){
-          link.count = 0;
-        }
-        link.count++;
-        LinksService.update(link);
+        LinksService.addCount(link);
         
       });
       window.open(link.url, '_blank').focus();

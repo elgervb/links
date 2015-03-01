@@ -38,6 +38,24 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
       });
     }
   },
+  addCount = function(link){
+    if (!link.count){
+      link.count = 0;
+    }
+    link.count++;
+    var request = $http({
+        method: "PATCH",
+        withCredentials: true,
+        url: baseUrl + SettingsService.user().username + '/links/' + link.guid,
+        data: {
+          count: link.count
+        }
+    });
+
+     return request.then(function(response){
+        update(response.data);
+     }, handleError);
+  },
   /**
    * Returns all links as a promise
    * 
@@ -102,6 +120,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
 
   // public API
   return ({
+    addCount      : addCount,
     addLink       : addLink,
     getLinks      : getLinks,
     update        : update,
