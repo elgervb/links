@@ -38,7 +38,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
       });
     }
   },
-  addCount = function(link){
+  incrementCount = function(link){
     if (!link.count){
       link.count = 0;
     }
@@ -120,7 +120,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
 
   // public API
   return ({
-    addCount      : addCount,
+    incrementCount: incrementCount,
     addLink       : addLink,
     getLinks      : getLinks,
     update        : update,
