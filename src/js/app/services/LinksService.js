@@ -54,6 +54,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
 
      return request.then(function(response){
         update(response.data);
+        return response;
      }, handleError);
   },
   /**
