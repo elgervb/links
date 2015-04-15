@@ -11,6 +11,9 @@ app.controller('AddController',
 
     LinksService.addLink($scope.link).then(function(){
       $location.path('/');
+    }, function(msg){
+      msg = msg || "Session expired";
+      alert(msg);
     });
     
   };

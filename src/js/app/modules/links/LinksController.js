@@ -15,7 +15,12 @@ app.controller('LinksController',
      */
     $scope.redirect = function(link){
       $timeout(function(){
-        LinksService.incrementCount(link);
+        LinksService.incrementCount(link).then(function(response){
+          console.dir(response.data);
+        }, function(msg){
+          msg = msg || "Session expired";
+          alert(msg);
+        });
       });
       window.open(link.url, '_blank').focus();
     };

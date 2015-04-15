@@ -1,3 +1,9 @@
+/*
+ * Set base font
+ */
+ html{
+  font-size: 16px;
+}
 html, body, .full-screen{
   height: 100%;
 }
@@ -6,7 +12,7 @@ body, input, textarea, select{
   font: 1em "Open Sans",Helvetica,Arial,sans-serif;
 }
 ::placeholder{
-    color: #666;
+    color:#666;
     font-style: italic;
 }
 a{

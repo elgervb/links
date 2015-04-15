@@ -63,7 +63,7 @@ section.search{
     font-weight: 600;
     max-width: 250px;
     min-width: 100px;
-    padding: 18px;
+    padding: 15px;
     position: absolute;
     right: 0;
     top: 4px;
@@ -106,43 +106,40 @@ section.search{
     width: 19%;
     z-index: 10;
 
-    @include phone{
-      max-width: 320px;
-      margin: 0 0 10px 0;
-      width: 100%;
+    @include max-responsive(2600px){
+      margin: 4px .1%;
+      width: 5.6667%;
     }
-
-    @include small-tablet{
-      width: 49%;
-    }
-
-    @include tablet{
-      width: 32%;
-    }
-
-    @include responsive(1600px){
-      margin: 4px .3%;
-      width: 13.68%;
-    }
-
-    @include responsive(1900px){
-      margin: 4px .3%;
-      width: 11.9%;
-    }
-
-    @include responsive(2200px){
-      margin: 4px .2%;
-      width: 9.6%;
-    }
-
-    @include responsive(2600px){
+    @include max-responsive(2600px){
       margin: 4px .2%;
       width: 7.3%;
     }
-
-    @include responsive(2600px){
-      margin: 4px .1%;
-      width: 5.6667%;
+    @include max-responsive(2200px){
+      margin: 4px .2%;
+      width: 9.6%;
+    }
+    @include max-responsive(1900px){
+      margin: 4px .3%;
+      width: 11.9%;
+    }
+    @include max-responsive(1600px){
+      margin: 4px .3%;
+      width: 13.68%;
+    }
+    @include max-responsive(1200px){
+      margin: 4px .5%;
+      width: 19%;
+    }
+    @include max-tablet{
+      width: 32%;
+    }
+    @include max-small-tablet{
+      width: 49%;
+    }
+    @include max-phone{
+      max-width: 320px;
+      margin: 0 0 10px 0;
+      width: 100%;
     }
 
     &:hover{

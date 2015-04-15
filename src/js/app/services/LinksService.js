@@ -53,8 +53,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
     });
 
      return request.then(function(response){
-        update(response.data);
-        return response;
+        updateLocal(response.data);
      }, handleError);
   },
   /**
@@ -109,6 +108,18 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
     store.set( links );
   },
   update = function(link){
+    var request = $http({
+        method: "PUT",
+        withCredentials: true,
+        url: baseUrl + SettingsService.user().username + '/links/' + link.guid,
+        data: link
+    });
+
+    return request.then(function(response){
+        updateLocal(response.data);
+    }, handleError);
+  },
+  updateLocal = function(link){
 
     console.log("updating link with guid: " + link.guid);
 

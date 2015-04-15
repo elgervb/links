@@ -20,7 +20,7 @@
 
 <div class="col-70">
   
-  <h1>{{selection.title}} <button class="btn-flat btn-pill btn-launch" ng-click="launch(selection)">Launch</button></h1>
+  <h1>{{selection.title}} <button class="btn btn-pill btn-launch" ng-click="launch(selection)">Launch</button></h1>
 
 
    <form method="post" name="form" ng-submit="save(selection)" novalidate>
@@ -33,8 +33,8 @@
       <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
 
       <div class="field">
-        <a class="btn-flat" ng-click="cancel()">Cancel</a>
-        <button type="submit" class="btn-flat-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
+        <a class="btn" ng-click="cancel()">Cancel</a>
+        <button type="submit" class="btn-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
       </div>
       
     </form>
