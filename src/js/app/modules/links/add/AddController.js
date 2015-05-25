@@ -1,49 +1,45 @@
 
-app.controller('AddController', 
- function($scope, $location, LinksService){
+app.controller('AddController', function($scope, $location, LinksService) {
 
   $scope.pageClass = 'add-page';
   $scope.link = {};
-  $scope.link.ispublic = 1; // enable by default
+  $scope.link.ispublic = 1; // Enable by default
 
-  $scope.submit = function(){
+  $scope.submit = function() {
     console.dir($scope.link);
 
-    LinksService.addLink($scope.link).then(function(){
+    LinksService.addLink($scope.link).then(function() {
       $location.path('/');
-    }, function(msg){
-      msg = msg || "Session expired";
+    }, function(msg) {
+      msg = msg || 'Session expired';
       alert(msg);
     });
-    
   };
 
-  $scope.cancel = function(){
+  $scope.cancel = function() {
     $location.path('/');
   };
 
-  $scope.addTag = function(tag){
+  $scope.addTag = function(tag) {
 
-    if (!tag){return;}
+    if (!tag) {return;}
 
     $scope.link = $scope.link || {};
     $scope.link.tags = $scope.link.tags || [];
 
-    //prevent dupes
-    if ($scope.link.tags.indexOf(tag) === -1){
+    // Prevent dupes
+    if ($scope.link.tags.indexOf(tag) === -1) {
       $scope.link.tags.push(tag.toLowerCase());
-      $scope.tag = "";
+      $scope.tag = '';
     }
   
   };
 
-  $scope.addTagWithKey = function(tag, $event){
+  $scope.addTagWithKey = function(tag, $event) {
 
-    if ($event.which === 13){
+    if ($event.which === 13) {
       $scope.addTag(tag);
       $event.preventDefault();
     }
-
   };
-		
 });

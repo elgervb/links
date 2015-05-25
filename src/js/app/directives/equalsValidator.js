@@ -10,38 +10,36 @@
  *   <span ng-show="form.password.$error.equalsValidator">Passwords did not match.</span>
  * </div>
  */
-app.directive('equalsValidator', [
-  function() {
+app.directive('equalsValidator', [ function() {
 
-    var link = function($scope, $element, $attrs, ctrl) {
+  var link = function($scope, $element, $attrs, ctrl) {
 
-      var validate = function(viewValue) {
-        var comparisonModel = $attrs.equalsValidator;
-        
-        if(!viewValue || !comparisonModel){
-          // It's valid because we have nothing to compare against
-          ctrl.$setValidity('equalsValidator', true);
-          return viewValue;
-        }
-
-        // It's valid if model is equal to the model we're comparing against
-        ctrl.$setValidity('equalsValidator', viewValue == comparisonModel );
-        return viewValue;
-      };
-
-      ctrl.$parsers.unshift(validate);
-      ctrl.$formatters.push(validate);
-
-      $attrs.$observe('equalsValidator', function(comparisonModel){
-        return validate(ctrl.$viewValue);
-      });
+    var validate = function(viewValue) {
+      var comparisonModel = $attrs.equalsValidator;
       
+      if (!viewValue || !comparisonModel) {
+        // It's valid because we have nothing to compare against
+        ctrl.$setValidity('equalsValidator', true);
+        return viewValue;
+      }
+
+      // It's valid if model is equal to the model we're comparing against
+      ctrl.$setValidity('equalsValidator', viewValue === comparisonModel);
+      return viewValue;
     };
 
-    return {
-      require: 'ngModel',
-      link: link
-    };
+    ctrl.$parsers.unshift(validate);
+    ctrl.$formatters.push(validate);
 
-  }
-]);
+    $attrs.$observe('equalsValidator', function(comparisonModel) {
+      return validate(ctrl.$viewValue);
+    });
+    
+  };
+
+  return {
+    require: 'ngModel',
+    link: link
+  };
+
+}]);

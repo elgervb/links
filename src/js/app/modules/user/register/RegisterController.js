@@ -1,31 +1,31 @@
 
-app.controller('RegisterController', 
- function($scope, $location, UserService){
+app.controller('RegisterController',  function($scope, $location, UserService) {
 
   $scope.pageClass = 'register-page';
   $scope.user = {};
 
-  $scope.cancel = function(){
+  $scope.cancel = function() {
     $location.path('/');
   };
-  $scope.register = function(){
-  	UserService.register($scope.user)
-  	.then(function(data){
-  		$scope.registered = true;
-  	}, function(msg){
-  		$scope.error = msg;
-  	});
+
+  $scope.register = function() {
+    UserService.register($scope.user)
+    .then(function(data) {
+      $scope.registered = true;
+    }, function(msg) {
+      $scope.error = msg;
+    });
   };
 
-  $scope.submitActivation = function(activationCode){
+  $scope.submitActivation = function(activationCode) {
     $scope.isSubmitting = true;
     UserService.activate(activationCode).then(
-      function(){
-        // redirect to login form
+      function() {
+        // Redirect to login form
         $location.path('/login');
       }, 
-      function(msg){
-        $scope.activationerror = msg || "Activation code not found";
+      function(msg) {
+        $scope.activationerror = msg || 'Activation code not found';
         $scope.isSubmitting = false;
         $scope.activationCode = null;
       });

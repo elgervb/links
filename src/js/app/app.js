@@ -4,10 +4,10 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
 .config(function($routeProvider, $locationProvider) {
  
   $routeProvider
-  	.when('/', {
-	  controller: 'LinksController',
-	  templateUrl: 'assets/js/app/modules/links/links.html'
-	})
+  .when('/', {
+    controller: 'LinksController',
+    templateUrl: 'assets/js/app/modules/links/links.html'
+  })
   .when('/add', {
     controller: 'AddController',
     templateUrl: 'assets/js/app/modules/links/add/add.html'
@@ -30,6 +30,6 @@ var app = angular.module('links', ['ngRoute', 'ngAnimate'])
     templateUrl: 'assets/js/app/modules/links/admin/admin.html'
   });
 
-   $locationProvider.html5Mode('true');
+  $locationProvider.html5Mode('true');
 
-}); // end config
+}); // End config

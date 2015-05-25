@@ -1,6 +1,6 @@
-// debug
-// app.value('baseUrl', 'http://localhost/git/REST-api/');
+// Debug
+// A app.value('baseUrl', 'http://localhost/git/REST-api/');
 
-// prod
+// Prod
 app.value('baseUrl', 'http://elgervanboxtel.nl/REST-api/');
 
