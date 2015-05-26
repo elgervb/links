@@ -1,25 +1,25 @@
 
-	<section>
+  <section>
 
-    	<h1> Settings </h1>
+      <h1> Settings </h1>
 
 
-    	<h2>Import / Export</h2>
+      <h2>Import / Export</h2>
 
-    	<div class="field">
+      <div class="field">
 
-    		<button class="btn-flat-red" ng-click="import()">Import</button>
-    		<button class="btn-flat-blue" ng-click="export()">Export</button>
-            <button class="btn-blue" ng-click="reset()">Reset</button>
+        <button class="btn-flat-red" ng-click="import()">Import</button>
+        <button class="btn-flat-blue" ng-click="export()">Export</button>
+        <button class="btn-blue" ng-click="reset()">Reset</button>
 
-    	</div>
+      </div>
 
-    	<div class="field" ng-show="exportData" >
+      <div class="field" ng-show="exportData" >
 
-    		<p>JSON <span>{{exportData.length}} links</span><p>
-    		<textarea class="export-textarea">{{exportData | json:1}}</textarea>
-    		<button class="btn-flat" ng-click="clear()">Clear</button>
+        <p>JSON <span>{{exportData.length}} links</span></p>
+        <textarea class="export-textarea">{{exportData | json:1}}</textarea>
+        <button class="btn-flat" ng-click="clear()">Clear</button>
 
-    	</div>
+      </div>
 
-  	</section>
+    </section>

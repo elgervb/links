@@ -3,7 +3,7 @@
 <div class="col-30 full-screen">
 
   <div class="field filter">
-    <input type="text" ng-model="filterlinks"placeholder="Filter:links"/>
+    <input type="text" ng-model="filterlinks" placeholder="Filter:links">
   </div>
   <ol class="extended full-screen">
     <li ng-repeat="(index, link) in links | filter:filterlinks track by $index" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
@@ -28,7 +28,6 @@
       <div field type="text" label="'Title'" name="'title'" ng-model="selection.title" required></div>
       <div field type="url" name="'url'" ng-model="selection.url" required></div>
       <div field type="collection" name="'tags'" ng-model="selection.tags" class="tags" required></div>
-     
       
       <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
 
