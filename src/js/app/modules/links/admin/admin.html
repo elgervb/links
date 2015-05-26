@@ -6,7 +6,7 @@
     <input type="text" ng-model="filterlinks" placeholder="Filter:links">
   </div>
   <ol class="extended full-screen">
-    <li ng-repeat="(index, link) in links | filter:filterlinks track by $index" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid}">
+    <li ng-repeat="(index, link) in links | filter:filterlinks track by $index" ng-click="select(link.guid);" ng-class="{selected: selection.guid==link.guid, private: !link.ispublic}">
       <p class="link-title">{{link.title}}</p>
 
       <p class="url">{{link.url}}</p>

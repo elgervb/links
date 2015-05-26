@@ -23,6 +23,10 @@
         cursor: default;
         pointer-events: none;
       }
+
+      &.private{
+        background: transparent url(../img/lock.png) no-repeat bottom right;
+      }
     }
     
     .link-title{
