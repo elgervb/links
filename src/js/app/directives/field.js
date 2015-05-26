@@ -8,7 +8,7 @@ app.directive('field', function() {
       label: '=?',
     },
     templateUrl: function(element, attrs) {
-      return 'assets/js/app/directives/field.' + attrs.type + '.html';
+      return 'js/app/directives/field.' + attrs.type + '.html';
     },
     link: function(scope, element, attrs, formCtrl) {
 
