@@ -2,6 +2,7 @@
  ********* BUTTONS *********
  **************************/
 .btn, [class*='btn-'] {
+  appearance: none; // to override default mobile styling
   background-color: $btn-gray;
   border: 1px solid darken($btn-gray, $btn-hover-darken);
   color: $font-color;
@@ -16,6 +17,7 @@
   transition: background .3s ease-out;
   user-select: none;
   vertical-align: middle;
+
 
   &:hover{
     background-color: darken($btn-gray, $btn-hover-darken);
