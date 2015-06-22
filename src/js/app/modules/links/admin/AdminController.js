@@ -8,12 +8,34 @@ app.controller('AdminController', function($scope, $timeout, LinksService) {
 
     // Set selection
     if (angular.isArray(links)) {
-      $scope.selection = links[0];
+      $scope.selection = angular.copy(links[0]);
     }
   });
 
   $scope.save = function(link) {
-    LinksService.update(link);
+    
+    LinksService.update(link).then(function(link) {
+      // update list
+      for (i = 0; i < $scope.links.length; i++) {
+        if ($scope.links[i].guid === link.guid) {
+          $scope.links[i] = link;
+          return link;
+        }
+      }
+      return link;
+    }).then(function(link) {
+      $scope.form.$setPristine();
+    });
+
+  };
+
+  $scope.cancel = function() {
+    for (i = 0; i < $scope.links.length; i++) {
+      if ($scope.links[i].guid === $scope.selection.guid) {
+        $scope.selection = angular.copy($scope.links[i]);
+        break;
+      }
+    }
     $scope.form.$setPristine();
   };
   
@@ -38,7 +60,7 @@ app.controller('AdminController', function($scope, $timeout, LinksService) {
     for (i = 0; i < $scope.links.length; i++) {
       link = $scope.links[i];
       if (link.guid === guid) {
-        $scope.selection = link;
+        $scope.selection = angular.copy(link);
         return;
       }
     }

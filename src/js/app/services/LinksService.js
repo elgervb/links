@@ -137,7 +137,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
     });
 
     return request.then(function(response) {
-      updateLocal(response.data);
+      return updateLocal(response.data);
     }, handleError);
   },
   updateLocal = function(link) {
@@ -149,6 +149,7 @@ app.service('LinksService', function($http, $q, baseUrl, SettingsService, Storag
     
     links[index] = link;
     save(links);
+    return link;
   };
 
   // Public API
