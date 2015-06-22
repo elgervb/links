@@ -13,9 +13,10 @@ app.controller('AdminController', function($scope, $timeout, LinksService) {
   });
 
   $scope.save = function(link) {
+    var i;
     
     LinksService.update(link).then(function(link) {
-      // update list
+      // Update list
       for (i = 0; i < $scope.links.length; i++) {
         if ($scope.links[i].guid === link.guid) {
           $scope.links[i] = link;
@@ -30,6 +31,8 @@ app.controller('AdminController', function($scope, $timeout, LinksService) {
   };
 
   $scope.cancel = function() {
+    var i;
+    
     for (i = 0; i < $scope.links.length; i++) {
       if ($scope.links[i].guid === $scope.selection.guid) {
         $scope.selection = angular.copy($scope.links[i]);
