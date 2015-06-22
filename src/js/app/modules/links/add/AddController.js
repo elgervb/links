@@ -1,12 +1,12 @@
 
 app.controller('AddController', function($scope, $location, LinksService) {
+  var args = $location.search();
 
   $scope.pageClass = 'add-page';
   $scope.link = {};
   $scope.link.ispublic = 1; // Enable by default
 
   // Check for args...
-  var args = $location.search();
   if (args.title) {
     $scope.link.title = args.title;
   }
@@ -18,7 +18,17 @@ app.controller('AddController', function($scope, $location, LinksService) {
     console.dir($scope.link);
 
     LinksService.addLink($scope.link).then(function() {
-      $location.path('/');
+      /* 
+       * When adding through the bookmarklet, then go back to the page the user came from, 
+       * otherwise just go to the home page
+       */
+       console.log('Referrer: ' + document.referrer);
+      if (args.title && args.url) {
+        location.href = args.url;
+      } else {
+        $location.path('/');
+      }
+      
     }, function(msg) {
       msg = msg || 'Session expired';
       alert(msg);
