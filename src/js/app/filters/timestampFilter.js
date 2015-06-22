@@ -9,8 +9,6 @@ app.filter('timestampFilter', function() {
       }
     }
 
-    console.log(object);
-
     var result, date = new Date();
     date.setTime(object);
     result = date.getFullYear();
