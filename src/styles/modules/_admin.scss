@@ -25,7 +25,9 @@
       }
 
       &.private{
-        background: transparent url(../img/lock.png) no-repeat bottom right;
+        background-image:url(../img/lock.png);
+        background-repeat: no-repeat;
+        background-position: bottom right;
       }
     }
     
