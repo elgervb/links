@@ -32,7 +32,7 @@
       <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
 
       <div class="field">
-        <a class="btn" ng-click="cancel()">Cancel</a>
+        <a class="btn" ng-click="cancel()" ng-disabled="form.$pristine">Cancel</a>
         <button type="submit" class="btn-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
       </div>
       
