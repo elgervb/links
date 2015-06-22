@@ -63,7 +63,7 @@ section.search{
     font-weight: 600;
     max-width: 250px;
     min-width: 100px;
-    padding: 15px;
+    padding: 16px;
     position: absolute;
     right: 0;
     top: 4px;
@@ -71,7 +71,7 @@ section.search{
 
     &:hover{
       background: transparent;
-      border-left: 1px solid transparent;
+      border: 1px solid transparent;
       color: $font-color;
     }
   }

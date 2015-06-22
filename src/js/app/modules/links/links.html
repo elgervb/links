@@ -11,7 +11,7 @@
 		<div class="field">
 
       <input type="input" class="search-links" placeholder="search links here..." ng-model="searchLinks" ng-model-options="{ debounce: 300 }" autosave="searchLinks"/>
-      <input type="button" class="btn-red search-links-btn" value="Search" />
+      <button class="btn-red search-links-btn">Search</button>
 
     </div>
 
@@ -27,7 +27,7 @@
             <p class="url">{{link.url}}</p>
           </div>  
           <div class="tags"> 
-            <p class="tag" ng-click="clickTag(tag, $event)" ng-repeat="tag in link.tags track by $index">{{tag}}</p>  
+            <p class="tag" ng-click="clickTag(tag, $event)" ng-repeat="tag in link.tags track by $index">{{tag}}</p>
           </div>
       </li>
     </ul>
