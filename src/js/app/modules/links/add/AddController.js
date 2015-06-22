@@ -5,6 +5,15 @@ app.controller('AddController', function($scope, $location, LinksService) {
   $scope.link = {};
   $scope.link.ispublic = 1; // Enable by default
 
+  // Check for args...
+  var args = $location.search();
+  if (args.title) {
+    $scope.link.title = args.title;
+  }
+  if (args.url) {
+    $scope.link.url = args.url;
+  }
+
   $scope.submit = function() {
     console.dir($scope.link);
 
