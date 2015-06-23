@@ -11,17 +11,15 @@ app.controller('LoginController', function($scope, $location, AuthService, Setti
     $scope.error = false;
 
     AuthService.login($scope.login.username, $scope.login.password)
-    .then(
-      function(user) { // Success
-        console.dir(user);
-        SettingsService.user(user);
-        $location.path('/');
-      },
-      function() { // Failure
-        $scope.error = true;
-        $scope.login.username = '';
-        $scope.login.password = '';
-      }
-    );
+    .then(function(user) {
+      console.dir(user);
+      SettingsService.user(user);
+      $location.path('/');
+    }).catch(function() { 
+      $scope.error = true;
+      $scope.login.username = '';
+      $scope.login.password = '';
+      $scope.form.$setPristine();
+    });
   };
 });

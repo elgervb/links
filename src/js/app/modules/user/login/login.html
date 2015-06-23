@@ -1,7 +1,7 @@
 
 	<section class="login">
 
-        <form class="form" ng-class="{shake: error}" ng-submit="login()"> 
+        <form class="form" name="form" ng-class="{shake: error}" ng-submit="login()" novalidate> 
 
             <a class="btn-cancel" ng-click="cancel()">&times;</a>
 
@@ -15,16 +15,24 @@
             
             <div class="field">
                 <label for="username">Username</label> 
-                <input type="text" id="username" placeholder="username" autocomplete="off" ng-model="login.username" required> 
+                <input type="text" id="username" name="username" placeholder="username" autocomplete="off" ng-model="login.username" required> 
+
+                <div ng-show="form.$submitted || form.username.$touched">
+                  <span ng-show="form.username.$error.required">Please fill in the desired username.</span>
+                </div>
             </div> 
 
             <div class="field">
                 <label for="password">Password</label> 
-                <input type="password" id="password" placeholder="password" autocomplete="off" ng-model="login.password" required> 
-            </div> 
+                <input type="password" id="password" name="password" placeholder="password" autocomplete="off" ng-model="login.password" required> 
+
+                 <div ng-show="form.$submitted || form.password.$touched">
+                    <span ng-show="form.password.$error.required">Password is required.</span>
+                </div>
+            </div>  
 
             <div class="field buttons">
-                <button class="btn-login" type="submit">Login</button>
+                <button class="btn-login" ng-disabled="!form.$valid">Login</button>
             </div>
 
             <div class="field">
