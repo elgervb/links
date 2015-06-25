@@ -18,32 +18,41 @@
 
 </div>
 
-<div class="col-70">
+<div class="col-70 centered-parent">
   
   <h1>{{selection.title}} <button class="btn btn-pill btn-launch" ng-click="launch(selection)">Launch</button></h1>
 
+  <div class="centered-box edit-box">
 
-   <form method="post" name="form" ng-submit="save(selection)" novalidate>
+     <form method="post" name="form" ng-submit="save(selection)" class="edit-form" ng-class="{hidden: hideform}" novalidate>
 
-      <div field type="text" label="'Title'" name="'title'" ng-model="selection.title" required></div>
-      <div field type="url" name="'url'" ng-model="selection.url" required></div>
-      <div field type="collection" name="'tags'" ng-model="selection.tags" class="tags" required></div>
-      
-      <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
+        <div field type="text" label="'Title'" name="'title'" ng-model="selection.title" required></div>
+        <div field type="url" name="'url'" ng-model="selection.url" required></div>
+        <div field type="collection" name="'tags'" ng-model="selection.tags" class="tags" required></div>
+        
+        <div field type="boolean" name="'public'" label="'Is public link'" ng-model="selection.ispublic" required></div>
 
-      <div class="field">
-        <a class="btn" ng-click="cancel()" ng-disabled="form.$pristine">Cancel</a>
-        <button type="submit" class="btn-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
+        <div class="field">
+          <a class="btn" ng-click="cancel()" ng-disabled="form.$pristine">Cancel</a>
+          <button type="submit" class="btn-red" ng-disabled="form.$invalid || form.$pristine">Submit</button>
+        </div>
+
+         <p>
+          <a href="" ng-click="hideform=true" class="showHideLink">Show JSON</a>
+        </p>
+
+      </form>
+
+      <div class="json-view" ng-class="{hidden: !hideform}">
+        <h3>JSON</h3>
+        <p><pre>{{selection | json:4}}</pre></p>
+
+        <p>
+          <a href="" ng-click="hideform=false" class="showHideLink">Show form</a>
+        </p>
       </div>
-      
-    </form>
 
-  <div>
-
-  </div>
-
-  <h3>JSON</h3>
-  <p><pre>{{selection | json:4}}</pre></p>
+    </div>
 
 </div>
 
