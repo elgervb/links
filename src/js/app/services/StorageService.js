@@ -14,7 +14,7 @@ app.service('StorageService', function() {
   var storage = window.localStorage;
 
   var get = function(key) {return angular.fromJson(storage.getItem(key));}, 
-  set = function(key, value) { storage.setItem(key, angular.toJson(value)); return this; }, 
+  set = function(key, value) { console.log('Write to storage with key ' + key); storage.setItem(key, angular.toJson(value)); return this; }, 
   key = function(index) {return storage.key(index);}, 
   remove = function(key) {storage.removeItem(key); return this;}, 
   clear = function() {storage.clear(); return this;},
